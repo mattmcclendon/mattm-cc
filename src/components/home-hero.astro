@@ -1,0 +1,207 @@
+---
+---
+
+<main class="home-hero" aria-label="Matthew McClendon homepage">
+	<video
+		class="home-hero__video"
+		autoplay
+		muted
+		loop
+		playsinline
+		preload="auto"
+		aria-hidden="true"
+		poster=""
+	>
+		<source src="/vid/mmc-muni-001.mp4" type="video/mp4" />
+	</video>
+
+	<div class="home-hero__shade"></div>
+
+	<nav class="site-nav" aria-label="Primary navigation">
+		<a href="/" aria-current="page">Home</a>
+		<a href="/chronology/">Chronology</a>
+		<a href="/resume/">Résumé</a>
+		<a href="/about-matthew/">About</a>
+	</nav>
+
+<section class="home-hero__content">
+	<p class="home-hero__mark">mattm.cc</p>
+	<h1 class="sr-only">Matthew McClendon</h1>
+	<img src="/img/matthew-mcclendon-wordmark.svg" alt="" class="home-hero__wordmark" width="1056" height="346" decoding="async" />
+	<p class="home-hero__roles">Designer. Writer. Systems Thinker.</p>
+</section>
+</main>
+
+<style>
+	.home-hero {
+		position: relative;
+		isolation: isolate;
+		display: grid;
+		min-height: 100svh;
+		overflow: hidden;
+		background: #02040a;
+		padding: clamp(1.25rem, 2vw, 2rem);
+	}
+
+	.home-hero__video,
+	.home-hero__shade {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.home-hero__video {
+		z-index: 0;
+		object-fit: cover;
+		object-position: calc(50% + 190px) center;
+		background: #02040a;
+		pointer-events: none;
+		transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		filter: brightness(0.94) saturate(0.92);
+	}
+
+	.home-hero__shade {
+		z-index: 1;
+		background:
+			linear-gradient(90deg, rgba(2, 4, 10, 0.80) 0%, rgba(2, 4, 10, 0.42) 42%, rgba(2, 4, 10, 0.10) 100%),
+			linear-gradient(180deg, rgba(2, 4, 10, 0.34) 0%, rgba(2, 4, 10, 0.08) 45%, rgba(2, 4, 10, 0.58) 100%);
+	}
+
+	.site-nav,
+	.home-hero__content {
+		position: relative;
+		z-index: 2;
+	}
+
+	.home-hero__content::before {
+		content: "";
+		position: absolute;
+		inset: -4rem -5rem;
+		z-index: -1;
+		pointer-events: none;
+
+		background: radial-gradient(
+			ellipse at 44% 48%,
+			rgba(2, 4, 10, 0.68) 0%,
+			rgba(2, 4, 10, 0.46) 34%,
+			rgba(2, 4, 10, 0.18) 58%,
+			transparent 78%
+		);
+
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+
+		-webkit-mask-image: radial-gradient(
+			ellipse at 44% 48%,
+			#000 0%,
+			#000 58%,
+			transparent 82%
+		);
+
+		mask-image: radial-gradient(
+			ellipse at 44% 48%,
+			#000 0%,
+			#000 58%,
+			transparent 82%
+		);
+	}
+
+	.site-nav {
+		align-self: start;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.1rem;
+		justify-content: flex-end;
+		font-size: clamp(0.68rem, 0.9vw, 0.78rem);
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		line-height: 1;
+		text-transform: uppercase;
+		color: rgba(248, 247, 244, 0.64);
+	}
+
+	.site-nav a {
+		color: inherit;
+		text-decoration: none;
+		transition: color 180ms ease;
+	}
+
+	.site-nav a:hover,
+	.site-nav a[aria-current="page"] {
+		color: #f8f7f4;
+	}
+
+	.home-hero__content {
+		align-self: center;
+		max-width: 42rem;
+		padding-left: clamp(0.75rem, 2vw, 1.5rem);
+		padding-bottom: 5vh;
+	}
+
+	.home-hero__mark {
+		margin: 0 0 2.25rem;
+		padding-left: 0.08rem;
+		font-size: clamp(0.78rem, 1.2vw, 0.92rem);
+		font-weight: 100;
+		font-style: normal;
+		letter-spacing: 0.24em;
+		text-transform: uppercase;
+		color: rgba(248, 247, 244, 0.62);
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.home-hero__wordmark {
+		display: block;
+		width: min(100%, 38rem);
+		height: auto;
+	}
+
+	.home-hero__roles {
+		margin: 0;
+		max-width: 36rem;
+		margin-top: clamp(1.5rem, 3vw, 2.5rem);
+		font-size: clamp(1rem, 1.6vw, 1.35rem);
+		font-weight: 400;
+		letter-spacing: 0.01em;
+		color: rgba(248, 247, 244, 0.82);
+	}
+
+	@media (max-width: 720px) {
+		.home-hero {
+			padding: 1rem;
+		}
+
+		.site-nav {
+			justify-content: flex-start;
+			gap: 0.75rem 1rem;
+		}
+
+		.home-hero__content {
+			align-self: end;
+			padding-bottom: 6vh;
+		}
+
+		.home-hero__content::before {
+			inset: -3rem -2rem;
+			-webkit-backdrop-filter: blur(8px);
+			backdrop-filter: blur(8px);
+		}
+
+		.home-hero__wordmark {
+			width: min(100%, 34rem);
+		}
+	}
+</style>

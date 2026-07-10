@@ -1,0 +1,253 @@
+---
+import PageLayout from '../../components/page-layout.astro';
+const resumeEntries = [
+  {
+    years: '2026–Present',
+    title: 'Senior Experience Designer',
+    organization: 'Punchcut',
+    location: 'Remote',
+    text: 'Design enterprise experiences for Fortune 500 clients, translating complex business requirements into clear workflows, systems, and decision-support interfaces while partnering across design, product, and engineering.',
+  },
+  {
+    years: '2022–Present',
+    title: 'Founder & Chief Architect',
+    organization: 'Amid the Noise',
+    location: 'San Francisco, CA',
+    text: 'Lead a design and research practice focused on AI-enabled systems, decision workflows, interpretability, escalation, accountability, and human-AI collaboration.',
+  },
+  {
+    years: '2021–2022',
+    title: 'Principal UX Designer',
+    organization: 'Dremio',
+    location: 'San Jose, CA',
+    text: 'Led UX strategy and design for a data-intensive analytics platform, building the design function and improving onboarding, adoption, cognitive load, and decision reliability.',
+    links: [
+      { label: 'Case Study', href: '/read/studies/case-studies/content/dremio' },
+      { label: 'Field Study', href: '/read/studies/field-studies/content/dremio' },
+    ],
+  },
+  {
+    years: '2020–2021',
+    title: 'Principal UX Designer',
+    organization: 'Automation Anywhere',
+    location: 'San Jose, CA',
+    text: 'Designed AI-powered automation workflows, human-in-the-loop systems, explainable interaction models, telemetry, feedback systems, and operational controls for enterprise clients.',
+    links: [
+      { label: 'Case Study', href: '/read/studies/case-studies/content/automation-anywhere' },
+      { label: 'Field Study', href: '/read/studies/field-studies/content/automation-anywhere' },
+    ],
+  },
+  {
+    years: '2019',
+    title: 'Lead Design Thinker, AI Enterprise Solutions',
+    organization: 'Wells Fargo',
+    location: 'San Francisco, CA',
+    text: 'Worked with executive leadership on early AI and data-driven decision systems in a regulated environment, translating ML and NLP capabilities into usable product concepts.',
+    links: [
+      { label: 'Case Study', href: '/read/studies/case-studies/content/wells-fargo' },
+      { label: 'Field Study', href: '/read/studies/field-studies/content/wells-fargo' },
+    ],
+  },
+  {
+    years: '2017–2019',
+    title: 'Principal UX Designer',
+    organization: 'CA Technologies',
+    location: 'San Jose, CA',
+    text: 'Guided early-stage enterprise and data-driven product teams from concept toward scalable system design, usability, workflow clarity, and long-term product integrity.',
+    links: [
+      { label: 'Field Study', href: '/read/studies/field-studies/content/ca-technologies' },
+    ],
+  },
+  {
+    years: '1996–2016',
+    title: 'Product Design & Systems Innovation',
+    organization: 'Netscape · Friendster · Yahoo · Autodesk · Evernote',
+    text: 'Designed large-scale consumer and enterprise systems across web, mobile, personalization, social systems, content platforms, professional tools, and data environments.',
+    links: [
+      { label: 'Field Study', href: '/read/studies/field-studies/content/netscape' },
+      { label: 'Field Study', href: '/read/studies/field-studies/content/friendster' },
+    ],
+  },
+];
+
+const capabilities = [
+  'AI-assisted product design',
+  'Human-in-the-loop workflows',
+  'AI explainability and trust design',
+  'Complex workflow and decision systems',
+  'Data and analytics platforms',
+  'Enterprise software',
+  '0→1 product development',
+  'UX strategy and design systems',
+  'Interaction design and information architecture',
+  'Cross-functional leadership',
+];
+---
+
+
+<PageLayout
+	title="Résumé"
+	current="resume"
+	description="Résumé for Matthew McClendon, a senior experience designer, writer, and systems thinker."
+	intro="Senior experience designer focused on complex systems, enterprise workflows, AI-enabled products, and the civic and organizational conditions that shape how people make decisions."
+>
+	<section class="page-section" aria-labelledby="experience-title">
+		<h2 id="experience-title">Experience</h2>
+		<div class="resume-list">
+			{resumeEntries.map((entry) => (
+				<article class="resume-entry">
+					<div class="resume-entry__meta">
+						<p>{entry.years}</p>
+					</div>
+					<div class="resume-entry__body">
+						<h3>{entry.title}</h3>
+						<p class="resume-entry__org">{entry.organization}</p>
+						<p>{entry.text}</p>
+						{entry.links && (
+							<ul class="entry-links" aria-label={`${entry.organization} links`}>
+								{entry.links.map((link) => (
+									<li>
+										<a
+											href={link.href}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{link.label}
+										</a>
+									</li>
+								))}
+							</ul>
+						)}
+					</div>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="page-section" aria-labelledby="capabilities-title">
+		<h2 id="capabilities-title">Capabilities</h2>
+		<ul class="capability-list">
+			{capabilities.map((capability) => (
+				<li>{capability}</li>
+			))}
+		</ul>
+	</section>
+</PageLayout>
+
+<style is:global>
+	.resume-list {
+		margin-top: clamp(2rem, 4vw, 3.5rem);
+	}
+
+	.resume-entry {
+		display: grid;
+		grid-template-columns: 8.5rem minmax(0, 1fr);
+		gap: clamp(3.5rem, 5vw, 5rem);
+		padding-block: clamp(2rem, 4vw, 3.25rem);
+		border-top: 1px solid var(--page-rule);
+	}
+
+	.resume-entry:first-child {
+		border-top: 0;
+		padding-top: 0;
+	}
+
+	.resume-entry__meta {
+		display: grid;
+		gap: 0.55rem;
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		line-height: 1.25;
+		text-transform: uppercase;
+		padding-left: 2.25rem;
+		white-space: nowrap;
+		transform: translateY(7px);
+		color: var(--page-muted);
+	}
+
+	.resume-entry__body {
+		max-width: 760px;
+	}
+
+	.resume-entry h3 {
+		font-size: clamp(1.45rem, 2.4vw, 2.25rem);
+		font-weight: 500;
+		letter-spacing: -0.045em;
+		line-height: 1;
+	}
+
+	.resume-entry__org {
+		margin-top: 0.55rem;
+		font-size: clamp(1.1rem, 1.55vw, 1.35rem);
+		font-weight: 400;
+		letter-spacing: -0.015em;
+		color: var(--page-muted);
+	}
+
+	.resume-entry__body > p:last-of-type {
+		margin-top: 1.15rem;
+		font-size: clamp(1rem, 1.35vw, 1.16rem);
+		font-weight: 300;
+		letter-spacing: -0.01em;
+		line-height: 1.55;
+		color: rgba(248, 247, 244, 0.82);
+	}
+
+	.entry-links,
+	.capability-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.entry-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1rem;
+		margin-top: 1.25rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		line-height: 1;
+		text-transform: uppercase;
+		color: var(--page-soft);
+	}
+
+	.entry-links a {
+		transition: color 180ms ease;
+	}
+
+	.entry-links a:hover {
+		color: var(--page-accent);
+	}
+
+	.capability-list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1px;
+		margin-top: clamp(2rem, 4vw, 3.5rem);
+		border: 1px solid var(--page-rule);
+		background: var(--page-rule);
+	}
+
+	.capability-list li {
+		padding: 1rem;
+		background: var(--page-bg);
+		font-size: clamp(1rem, 1.25vw, 1.12rem);
+		font-weight: 300;
+		letter-spacing: -0.01em;
+		line-height: 1.35;
+	}
+
+	@media (max-width: 760px) {
+		.resume-entry {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.capability-list {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

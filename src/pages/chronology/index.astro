@@ -1,0 +1,409 @@
+---
+import PageLayout from '../../components/page-layout.astro';
+
+const eras = [
+	{
+		range: '1973–1992',
+		title: 'Formation',
+		items: [
+			{
+				date: '10/1973',
+				title: 'Born in Altus, Oklahoma',
+				text: 'The beginning of a life shaped by distance, weather, books, and a persistent curiosity about worlds beyond the one immediately visible.',
+			},
+			{
+				date: '12/1978',
+				title: 'Imagined Futures',
+				text: 'Star Trek taught me that technology could be hopeful. December afternoons were spent on the floor flying an Enterprise through a universe of Christmas tree lights and imagination.',
+			},
+			{
+				date: '06/1990',
+				title: 'SWOSU Science & Math Camp',
+				text: 'Summer meant college credits, new friendships, and a first taste of belonging among students who treated science and mathematics as shared possibility.',
+			},
+			{
+				date: '06/1991',
+				title: 'The SSC notices',
+				text: 'I returned to SWOSU the following summer and was recruited by the Superconducting Super Collider, a recognition of my grasp of science, mathematics, and the future I imagined.',
+			},
+			{
+				date: '05/1992',
+				title: 'Graduated from Altus High School',
+				text: 'Physics was the plan. The rest of life had other ideas.',
+			},
+			{
+				date: '05/1994',
+				title: 'Left Oklahoma State University',
+				text: 'College did not go as planned. The learning continued anyway.',
+			},
+		],
+	},
+	{
+		range: '1996–2008',
+		title: 'The Public Internet',
+		items: [
+			{
+				date: '05/1996',
+				title: 'Founded IXDesign',
+				text: 'My first consultancy, created before I fully understood how much independent work would shape the rest of my professional life.',
+			},
+			{
+				date: '10/1996',
+				title: 'Bought mattmcc.com & ixdsgn.com',
+				text: 'Claimed my first domain, a small act of ownership that made the web feel personal, durable, and mine.',
+			},
+			{
+				date: '09/1997',
+				title: 'Netscape',
+				text: 'Entered the commercial web while the public Internet was still being invented in real time.',
+			},
+			{
+				date: '09/2001',
+				title: 'September 11',
+				text: 'First near-death experience. A day that permanently changed my sense of history, vulnerability, and civic consequence.',
+			},
+			{
+				date: '09/2004',
+				title: 'Friendster',
+				text: 'Worked on social networking before social media hardened into infrastructure.',
+			},
+			{
+				date: '10/2005',
+				title: 'Yahoo!',
+				text: 'Helped shape one of the Internet’s primary front doors at shallow-billion-user scale.',
+			},
+		],
+	},
+	{
+		range: '2009–2016',
+		title: 'Digital Transformation',
+		items: [
+			{
+				date: '05/2009',
+				title: 'LEVEL Studios',
+				text: 'The hinge from public web products toward enterprise clients, digital transformation, and organizational scale.',
+			},
+			{
+				date: '05/2009',
+				title: 'Boston takes hold',
+				text: 'While embedded with Fidelity Investments through LEVEL Studios, I fell in love with Boston and Massachusetts, adding place itself to the map of future possibility.',
+			},
+			{
+				date: '01/2011',
+				title: 'Evernote',
+				text: 'Explored memory, capture, and productivity through platform work, including Windows and ecosystem design.',
+			},
+			{
+				date: '07/2012',
+				title: 'Autodesk',
+				text: 'Moved deeper into cloud services, licensing, workflows, and the complexity of professional tools.',
+			},
+			{
+				date: '12/2014',
+				title: 'Cadence Design Systems',
+				text: 'Entered the world of semiconductor design, where software, engineering, and invisible infrastructure converged.',
+			},
+		],
+	},
+	{
+		range: '2017–2021',
+		title: 'Enterprise Systems',
+		items: [
+			{
+				date: '05/2017',
+				title: 'Founded Matt McClendon & Co., LLC',
+				text: 'Created a formal home for independent consulting, advisory work, and the practice that would eventually feed Amid the Noise.',
+			},
+			{
+				date: '08/2017',
+				title: 'CA Technologies',
+				text: 'Worked at the scale of enterprise transformation, organizational systems, and executive-level design strategy.',
+			},
+			{
+				date: '07/2019',
+				title: 'Wells Fargo',
+				text: 'Designed within enterprise AI, governance, decision systems, and the friction of large institutions.',
+			},
+			{
+				date: '11/2019',
+				title: 'Gino is born',
+				text: 'A new life entered the world, and the shape of responsibility began to change.',
+			},
+			{
+				date: '01/2020',
+				title: 'Automation Anywhere',
+				text: 'Worked inside intelligent automation as AI began changing how organizations imagined work.',
+			},
+			{
+				date: '03/2020',
+				title: 'The world enters lockdown',
+				text: 'COVID turned abstraction into atmosphere, revealing how fragile institutions, routines, work, proximity, and ordinary life could become all at once.',
+			},
+			{
+				date: '06/2020',
+				title: 'My father dies',
+				text: 'His death from prostate cancer marked another before-and-after, reshaping memory, inheritance, grief, and the unfinished conversations parents leave behind.',
+			},
+			{
+				date: '01/2021',
+				title: 'Dremio',
+				text: 'Moved into data infrastructure, where architecture, access, and decision-making became part of the same design problem.',
+			},
+			{
+				date: '08/2021',
+				title: 'Chose to become Gino’s father',
+				text: 'Not a formal milestone, but one of the most important decisions of my life.',
+			},
+		],
+	},
+	{
+		range: '2022–2026',
+		title: 'Collapse & Reinvention',
+		items: [
+			{
+				date: '01/2022',
+				title: 'Founded Amid the Noise',
+				text: 'Created a place for writing, research, systems thinking, and the questions that would not fit neatly anywhere else.',
+			},
+			{
+				date: '04/2022',
+				title: 'Sepsis',
+				text: 'Second near-death experience. Survival became less abstract.',
+			},
+			{
+				date: '02/2024',
+				title: 'Automobile collision',
+				text: 'Third near-death experience. Another reminder that a life can divide cleanly into before and after.',
+			},
+			{
+				date: '04/2025',
+				title: 'Chose a different future',
+				text: 'The turning point was not what happened. It was the decision that followed.',
+			},
+			{
+				date: '07/2026',
+				title: 'Punchcut',
+				text: 'Returned to professional design with a different sense of time, responsibility, and what work can mean.',
+			},
+			{
+				date: '07/2026',
+				title: 'Returned to university',
+				text: 'Began the mathematics and statistics path I once thought required being eighteen again.',
+			},
+		],
+	},
+];
+---
+
+<PageLayout
+	title="Chronology"
+	current="chronology"
+	description="A chronology of inflection points in Matthew McClendon’s life and work."
+	intro="A chronology of inflection points. Some happened to me. Others were choices. Together they explain the work more honestly than any résumé could."
+>
+	<section class="page-section" aria-labelledby="chronology-overview-title">
+		<h2 id="chronology-overview-title">Overview</h2>
+		<div class="prose">
+			<p>
+				This is not a complete chronology. It is a record of inflection points: the
+				moments, institutions, losses, responsibilities, and decisions after which I
+				was no longer quite the same person.
+			</p>
+		</div>
+	</section>
+
+	<div class="timeline-eras" aria-label="Chronology entries">
+		{eras.map((era) => (
+			<section class="timeline-era" aria-labelledby={`era-${era.range}-title`}>
+				<div class="timeline-era__heading">
+					<p>{era.range}</p>
+					<h2 id={`era-${era.range}-title`}>{era.title}</h2>
+				</div>
+
+				<div class="timeline-list">
+					{era.items.map((item) => (
+						<article class="timeline-item">
+							<p class="timeline-item__date">{item.date}</p>
+							<div class="timeline-item__body">
+								<h3>{item.title}</h3>
+								<p>{item.text}</p>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		))}
+	</div>
+</PageLayout>
+
+<style>
+	.timeline-eras {
+		--timeline-date-width: 9.5rem;
+		--timeline-gutter: clamp(2rem, 5vw, 5rem);
+		display: grid;
+		gap: clamp(4rem, 8vw, 7rem);
+		position: relative;
+	}
+
+	.timeline-eras::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: calc(var(--timeline-date-width) + (var(--timeline-gutter) / 2));
+		width: 1px;
+		background: linear-gradient(
+			180deg,
+			transparent 0,
+			var(--page-rule) 3rem,
+			var(--page-rule) calc(100% - 3rem),
+			transparent 100%
+		);
+		pointer-events: none;
+	}
+
+	.timeline-era {
+		border-top: 0;
+		padding-top: clamp(2.5rem, 5vw, 4rem);
+		position: relative;
+	}
+
+	.timeline-era::before {
+		content: "";
+		position: absolute;
+		top: calc(clamp(2.5rem, 5vw, 4rem) + 5px);
+		left: calc(var(--timeline-date-width) + (var(--timeline-gutter) / 2));
+		width: 10px;
+		height: 10px;
+		border-radius: 999px;
+		background: var(--brand-color);
+		border: 1px solid rgba(248, 247, 244, 0.28);
+		box-shadow: 0 0 0 8px var(--page-bg);
+		transform: translateX(-50%);
+	}
+
+	.timeline-era__heading {
+		position: sticky;
+		top: 1.5rem;
+		display: grid;
+		grid-template-columns: var(--timeline-date-width) var(--timeline-gutter) minmax(0, 1fr);
+		gap: 0;
+		margin-bottom: clamp(2rem, 4vw, 3.5rem);
+		z-index: 1;
+	}
+
+	.timeline-era__heading p {
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		line-height: 1;
+		text-transform: uppercase;
+		color: var(--page-muted);
+		justify-self: end;
+		text-align: right;
+		width: fit-content;
+		padding: 0.35rem 0.5rem;
+		background: var(--page-bg);
+		border: 1px solid var(--page-rule);
+		border-radius: 999px;
+	}
+
+	.timeline-era__heading h2 {
+		font-size: clamp(2rem, 4.5vw, 4rem);
+		font-weight: 500;
+		letter-spacing: -0.06em;
+		line-height: 0.95;
+		width: fit-content;
+		padding-right: 0.35rem;
+		background: var(--page-bg);
+		grid-column: 3;
+	}
+
+	.timeline-list {
+		display: grid;
+	}
+
+	.timeline-item {
+		display: grid;
+		grid-template-columns: var(--timeline-date-width) var(--timeline-gutter) minmax(0, 1fr);
+		gap: 0;
+		padding-block: clamp(1.5rem, 3vw, 2.35rem);
+		position: relative;
+	}
+
+	.timeline-item::before {
+		content: "";
+		position: absolute;
+		top: calc(clamp(1.5rem, 3vw, 2.35rem) + 5px);
+		left: calc(var(--timeline-date-width) + (var(--timeline-gutter) / 2));
+		width: 6px;
+		height: 6px;
+		border-radius: 999px;
+		background: var(--page-bg);
+		border: 1px solid rgba(248, 247, 244, 0.46);
+		box-shadow: 0 0 0 7px var(--page-bg);
+		transform: translateX(-50%);
+	}
+
+	.timeline-item__date {
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		line-height: 1.2;
+		text-transform: uppercase;
+		color: var(--page-muted);
+		justify-self: end;
+		padding-right: 0;
+		text-align: right;
+	}
+
+	.timeline-item__body {
+		max-width: 760px;
+		grid-column: 3;
+	}
+
+	.timeline-item h3 {
+		font-size: clamp(1.25rem, 2vw, 1.75rem);
+		font-weight: 500;
+		letter-spacing: -0.035em;
+		line-height: 1;
+	}
+
+	.timeline-item__body p {
+		margin-top: 0.85rem;
+		font-size: clamp(1rem, 1.25vw, 1.12rem);
+		font-weight: 300;
+		letter-spacing: -0.01em;
+		line-height: 1.55;
+		color: rgba(248, 247, 244, 0.82);
+	}
+
+	@media (max-width: 760px) {
+		.timeline-eras::before,
+		.timeline-era::before,
+		.timeline-item::before {
+			display: none;
+		}
+
+		.timeline-era__heading {
+			position: static;
+		}
+
+		.timeline-era__heading,
+		.timeline-item {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.timeline-era__heading h2,
+		.timeline-item__body {
+			grid-column: auto;
+		}
+
+		.timeline-era__heading p,
+		.timeline-item__date {
+			justify-self: start;
+			text-align: left;
+		}
+	}
+</style>

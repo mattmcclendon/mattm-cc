@@ -1,0 +1,90 @@
+---
+interface Props {
+	current?: 'home' | 'chronology' | 'resume' | 'about';
+}
+
+const { current = 'home' } = Astro.props;
+---
+
+<header class="site-header">
+	<a class="site-brand" href="/" aria-label="mattm.cc home">
+		<span class="brand-mark" aria-hidden="true"></span>
+		<span class="brand-name">mattm.cc</span>
+	</a>
+
+	<nav class="site-nav" aria-label="Primary navigation">
+		<a href="/" aria-current={current === 'home' ? 'page' : undefined}>Home</a>
+		<a href="/chronology/" aria-current={current === 'chronology' ? 'page' : undefined}>Chronology</a>
+		<a href="/resume/" aria-current={current === 'resume' ? 'page' : undefined}>Résumé</a>
+		<a href="/about-matthew/" aria-current={current === 'about' ? 'page' : undefined}>About</a>
+	</nav>
+</header>
+
+<style>
+	.site-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+		padding-block: clamp(1.25rem, 2vw, 2rem);
+		border-bottom: 1px solid var(--page-rule);
+	}
+
+	.site-brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.9rem;
+		color: var(--page-muted);
+		text-decoration: none;
+		transition: color 180ms ease;
+	}
+
+	.site-brand:hover {
+		color: var(--page-accent);
+	}
+
+	.brand-mark {
+		width: 14px;
+		height: 14px;
+		background: var(--brand-color, var(--page-accent));
+		border-radius: 1px;
+		flex: 0 0 14px;
+	}
+
+	.brand-name,
+	.site-nav {
+		font-size: clamp(0.78rem, 1vw, 0.9rem);
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.site-nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.1rem;
+	}
+
+	.site-nav a {
+		color: var(--page-muted);
+		text-decoration: none;
+		transition: color 180ms ease;
+	}
+
+	.site-nav a:hover,
+	.site-nav a[aria-current='page'] {
+		color: var(--page-accent);
+	}
+
+	@media (max-width: 760px) {
+		.site-header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.site-nav {
+			justify-content: flex-start;
+		}
+	}
+</style>

@@ -1,0 +1,210 @@
+
+
+:root {
+	color-scheme: dark;
+	font-family: sofia-pro, ui-sans-serif, system-ui, sans-serif;
+	background: #06080d;
+	color: #f8f7f4;
+	--page-bg: #06080d;
+	--page-text: #f8f7f4;
+	--page-muted: rgba(248, 247, 244, 0.64);
+	--page-soft: rgba(248, 247, 244, 0.42);
+	--page-rule: rgba(248, 247, 244, 0.14);
+	--brand-color: #5e573f;
+	--page-accent: var(--brand-color);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	min-height: 100%;
+	margin: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--page-bg);
+	color: var(--page-text);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	transition: color 180ms ease;
+}
+
+a:hover {
+	color: var(--page-accent);
+}
+
+.site-header,
+.page-shell,
+.site-footer {
+	width: min(100% - 2rem, 1180px);
+	margin-inline: auto;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
+
+.page-shell {
+	padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.page-intro {
+	max-width: 800px;
+	padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+h1 {
+	font-size: clamp(4rem, 10vw, 8rem);
+	font-weight: 600;
+	letter-spacing: -0.085em;
+	line-height: 0.9;
+}
+
+.page-intro p {
+	margin-top: 13px;
+	max-width: 760px;
+	font-size: clamp(1.25rem, 2.2vw, 2rem);
+	font-weight: 300;
+	letter-spacing: -0.03em;
+	line-height: 1.2;
+	color: rgba(248, 247, 244, 0.82);
+}
+
+.page-section {
+	display: grid;
+	grid-template-columns: 12rem minmax(0, 1fr);
+	gap: clamp(2rem, 5vw, 5rem);
+	padding-block: clamp(3rem, 6vw, 5rem);
+	border-top: 1px solid var(--page-rule);
+}
+
+.page-section h2 {
+	font-size: clamp(1.25rem, 2.2vw, 2rem);
+	font-weight: 500;
+	letter-spacing: -0.04em;
+	line-height: 1;
+}
+
+.page-shell.page-shell--legal {
+	max-width: min(100% - 2rem, 900px);
+}
+
+.page-shell.page-shell--legal h1 {
+	font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+	letter-spacing: -0.055em;
+	line-height: 0.95;
+}
+
+.page-shell--legal .page-intro {
+	max-width: 720px;
+	padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.page-shell--legal .page-intro p {
+	font-size: clamp(1rem, 1.45vw, 1.2rem);
+	line-height: 1.45;
+}
+
+.page-shell.page-shell--legal .page-section {
+	display: block;
+	max-width: 720px;
+	padding-block: clamp(2rem, 4vw, 3.25rem);
+}
+
+.page-shell.page-shell--legal .page-section h2 {
+	margin-bottom: 1rem;
+	font-size: clamp(1rem, 1.5vw, 1.25rem);
+	letter-spacing: -0.025em;
+}
+
+.page-shell--legal .prose {
+	gap: 1rem;
+}
+
+.page-shell.page-shell--legal .prose p {
+	font-size: clamp(0.92rem, 1.15vw, 1rem);
+	line-height: 1.65;
+}
+
+.prose,
+.affiliation-grid {
+	max-width: 760px;
+}
+
+.prose {
+	display: grid;
+	gap: 1.15rem;
+}
+
+.prose p,
+.affiliation-grid li,
+.focus-list li {
+	font-size: clamp(1rem, 1.35vw, 1.16rem);
+	font-weight: 300;
+	letter-spacing: -0.01em;
+	line-height: 1.55;
+	color: rgba(248, 247, 244, 0.82);
+}
+
+.focus-list,
+.affiliation-grid ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.focus-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem 1rem;
+	max-width: 760px;
+}
+
+.focus-list li {
+	padding: 0.55rem 0.75rem;
+	border: 1px solid var(--page-rule);
+	line-height: 1;
+}
+
+.affiliation-grid {
+	display: grid;
+	gap: 2.25rem;
+}
+
+.affiliation-grid h3 {
+	margin-bottom: 0.9rem;
+	font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+	font-weight: 500;
+	letter-spacing: -0.025em;
+	line-height: 1.1;
+}
+
+.affiliation-grid ul {
+	display: grid;
+	gap: 0.45rem;
+}
+
+@media (max-width: 760px) {
+	.site-footer {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.page-section {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+}
