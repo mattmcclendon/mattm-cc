@@ -181,27 +181,43 @@
 
 	@media (max-width: 720px) {
 		.home-hero {
-			padding: 1rem;
-		}
-
-		.site-nav {
-			justify-content: flex-start;
-			gap: 0.75rem 1rem;
+			min-height: 100dvh;
 		}
 
 		.home-hero__content {
 			align-self: end;
-			padding-bottom: 6vh;
-		}
-
-		.home-hero__content::before {
-			inset: -3rem -2rem;
-			-webkit-backdrop-filter: blur(8px);
-			backdrop-filter: blur(8px);
+			padding-bottom: clamp(5rem, 14vh, 8rem);
 		}
 
 		.home-hero__wordmark {
-			width: min(100%, 34rem);
+			width: min(88vw, 32rem);
+		}
+
+		.home-hero__video {
+			object-position: 56% center;
+		}
+
+		.site-nav {
+			gap: 1.25rem;
+			font-size: 0.78rem;
+		}
+	}
+
+	@media (max-height: 520px) and (orientation: landscape) {
+		.home-hero__content {
+			padding-bottom: 2.5rem;
+		}
+
+		.home-hero__wordmark {
+			width: min(52vw, 34rem);
+		}
+
+		.home-hero__roles {
+			margin-top: 0.75rem;
+		}
+
+		.site-nav {
+			top: 1.25rem;
 		}
 	}
 </style>
