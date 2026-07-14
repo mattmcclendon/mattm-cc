@@ -1,0 +1,183 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../components/page-layout.astro';
+
+const studies = (await getCollection('caseStudies', ({ data }) => !data.draft))
+	.sort((a, b) => a.data.order - b.data.order);
+
+const groups = [
+	{
+		id: 'selected-work',
+		title: 'Selected Work',
+		description: 'Engagements in enterprise platforms, intelligent automation, governance, and product incubation.',
+	},
+	{
+		id: 'systems-frameworks',
+		title: 'Systems & Frameworks',
+		description: 'Applied frameworks and observations about trust, access, accountability, and systems under pressure.',
+	},
+] as const;
+---
+
+<PageLayout
+	title="Case Studies"
+	current="case-studies"
+	description="Case studies by Matthew McClendon documenting the reasoning behind complex systems, decisions, and design interventions."
+	intro="Documented reasoning from work in complex systems—what made the problem difficult, how the system changed, and what became possible."
+>
+	<div class="case-study-groups">
+		{groups.map((group) => {
+			const groupStudies = studies.filter((study) => study.data.group === group.id);
+
+			return (
+				<section class="case-study-group" aria-labelledby={`${group.id}-title`}>
+					<header class="case-study-group__header">
+						<h2 id={`${group.id}-title`}>{group.title}</h2>
+						<p>{group.description}</p>
+					</header>
+
+					<ol class="case-study-list">
+						{groupStudies.map((study, index) => (
+							<li>
+								<a href={`/case-studies/${study.id}/`}>
+									<span class="case-study-list__number" aria-hidden="true">
+										{String(index + 1).padStart(2, '0')}
+									</span>
+									<span class="case-study-list__body">
+										<span class="case-study-list__meta">
+											{study.data.company} · {study.data.timeframe}
+										</span>
+										<span class="case-study-list__title">{study.data.title}</span>
+										<span class="case-study-list__description">{study.data.description}</span>
+									</span>
+									<span class="case-study-list__arrow" aria-hidden="true">↗</span>
+								</a>
+							</li>
+						))}
+					</ol>
+				</section>
+			);
+		})}
+	</div>
+</PageLayout>
+
+<style>
+	.case-study-groups {
+		display: grid;
+		gap: clamp(5rem, 10vw, 8rem);
+	}
+
+	.case-study-group {
+		border-top: 1px solid var(--page-rule);
+	}
+
+	.case-study-group__header {
+		display: grid;
+		grid-template-columns: 12rem minmax(0, 1fr);
+		gap: clamp(2rem, 5vw, 5rem);
+		padding-block: clamp(2rem, 4vw, 3rem);
+	}
+
+	.case-study-group__header h2 {
+		font-size: clamp(1.25rem, 2.2vw, 2rem);
+		font-weight: 500;
+		letter-spacing: -0.04em;
+		line-height: 1;
+	}
+
+	.case-study-group__header p {
+		max-width: 640px;
+		font-size: clamp(1rem, 1.25vw, 1.1rem);
+		font-weight: 300;
+		line-height: 1.55;
+		color: var(--page-muted);
+	}
+
+	.case-study-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		border-bottom: 1px solid var(--page-rule);
+	}
+
+	.case-study-list li {
+		border-top: 1px solid var(--page-rule);
+	}
+
+	.case-study-list a {
+		display: grid;
+		grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+		gap: clamp(1rem, 3vw, 2.25rem);
+		align-items: start;
+		padding-block: clamp(1.75rem, 4vw, 3rem);
+		color: inherit;
+	}
+
+	.case-study-list__number,
+	.case-study-list__meta {
+		font-size: 0.7rem;
+		font-weight: 600;
+		letter-spacing: 0.11em;
+		line-height: 1.2;
+		text-transform: uppercase;
+		color: var(--page-muted);
+	}
+
+	.case-study-list__number {
+		padding-top: 0.2rem;
+	}
+
+	.case-study-list__body {
+		display: grid;
+		gap: 0.75rem;
+		max-width: 820px;
+	}
+
+	.case-study-list__title {
+		font-size: clamp(1rem, 1.65vw, 1.5rem);
+		font-weight: 500;
+		letter-spacing: -0.035em;
+		line-height: 1;
+		white-space: nowrap;
+		transition: color 180ms ease;
+	}
+
+	.case-study-list__description {
+		max-width: 680px;
+		font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+		font-weight: 300;
+		line-height: 1.5;
+		color: rgba(248, 247, 244, 0.68);
+	}
+
+	.case-study-list__arrow {
+		font-size: 1.2rem;
+		line-height: 1;
+		color: var(--page-muted);
+		transition: color 180ms ease, transform 180ms ease;
+	}
+
+	.case-study-list a:hover .case-study-list__title,
+	.case-study-list a:hover .case-study-list__arrow {
+		color: var(--page-accent);
+	}
+
+	.case-study-list a:hover .case-study-list__arrow {
+		transform: translate(0.2rem, -0.2rem);
+	}
+
+	@media (max-width: 760px) {
+		.case-study-group__header {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.case-study-list a {
+			grid-template-columns: 2rem minmax(0, 1fr) auto;
+		}
+
+		.case-study-list__title {
+			white-space: normal;
+		}
+	}
+</style>

@@ -1,0 +1,219 @@
+
+
+---
+import PageLayout from '../../components/page-layout.astro';
+
+const caseStudies = [
+	{
+		slug: 'dremio-enterprise-systems',
+		title: 'Designing Complex Enterprise Systems',
+		client: 'Dremio',
+		timeframe: '2021',
+		role: 'Principal UX Designer',
+		description:
+			'A case study in designing enterprise data workflows that help teams orient themselves, collaborate safely, explore SQL, and operationalize work with confidence.',
+		intro:
+			'Dremio was not simply a database product. It was a collaborative workspace for data, where analysts, engineers, and business users needed to discover, trust, change, and operationalize information inside a complex enterprise platform.',
+		meta: ['Enterprise UX', 'Data collaboration', 'AI-adjacent systems', 'Workflow design'],
+	},
+];
+
+export function getStaticPaths() {
+	return caseStudies.map((study) => ({
+		params: { slug: study.slug },
+		props: { study },
+	}));
+}
+
+const { study } = Astro.props;
+---
+
+<PageLayout
+	title={study.title}
+	current="resume"
+	description={study.description}
+	intro={study.intro}
+>
+	<section class="case-study-meta" aria-label="Case study summary">
+		<div>
+			<p class="case-study-meta__label">Client</p>
+			<p>{study.client}</p>
+		</div>
+		<div>
+			<p class="case-study-meta__label">Role</p>
+			<p>{study.role}</p>
+		</div>
+		<div>
+			<p class="case-study-meta__label">Timeframe</p>
+			<p>{study.timeframe}</p>
+		</div>
+		<div>
+			<p class="case-study-meta__label">Focus</p>
+			<ul>
+				{study.meta.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+	</section>
+
+	<section class="page-section" aria-labelledby="challenge-title">
+		<h2 id="challenge-title">Challenge</h2>
+		<div class="prose">
+			<p>
+				Enterprise data platforms accumulate complexity quickly. New capabilities are
+				added, teams organize content differently, and the product can begin to make
+				more sense to the people who built it than to the people using it every day.
+			</p>
+			<p>
+				The design challenge was to help users understand where they were, what they
+				could do next, and how their work related to the larger platform.
+			</p>
+		</div>
+	</section>
+
+	<section class="page-section" aria-labelledby="approach-title">
+		<h2 id="approach-title">Approach</h2>
+		<div class="prose">
+			<p>
+				I organized the work around four moments in the lifecycle of an enterprise
+				data platform: onboarding, collaboration, SQL exploration, and operational
+				automation.
+			</p>
+			<p>
+				Across those scenarios, the design goal stayed consistent: reduce uncertainty,
+				make system state visible, and help people make better decisions inside a
+				complex workflow.
+			</p>
+		</div>
+	</section>
+
+	<section class="page-section" aria-labelledby="scenario-one-title">
+		<h2 id="scenario-one-title">Enterprise Onboarding</h2>
+		<div class="prose">
+			<p>
+				The first interaction with the platform needed to establish confidence. Rather
+				than present a long configuration form, onboarding became a guided sequence
+				where users could see what was complete, what remained, and what Dremio was
+				waiting for.
+			</p>
+
+			<figure class="case-study-figure case-study-figure--wide">
+				<img
+					src="/img/case-studies/dremio/placeholder-001.png"
+					alt="Placeholder for Dremio onboarding screen"
+					loading="lazy"
+				/>
+				<figcaption>
+					Guided onboarding established orientation, progress, and confidence before
+					users entered the full platform.
+				</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section class="page-section" aria-labelledby="scenario-two-title">
+		<h2 id="scenario-two-title">Data Versioning & Collaboration</h2>
+		<div class="prose">
+			<p>
+				Dremio’s strategic bet was treating data more like software. Branches,
+				commits, comparisons, merges, and conflict resolution created a powerful
+				model, but only if analysts and business users could understand it without
+				needing to think like software engineers.
+			</p>
+			<p>
+				The design work translated version control into approachable collaboration
+				patterns centered on safety, visibility, and reversible change.
+			</p>
+		</div>
+	</section>
+
+	<section class="page-section" aria-labelledby="next-title">
+		<h2 id="next-title">Next</h2>
+		<div class="prose">
+			<p>
+				This scaffold gives the case study its working route and visual rhythm. The
+				next step is to replace the placeholder prose and image with the full Dremio
+				case study content and screenshot sequence.
+			</p>
+		</div>
+	</section>
+</PageLayout>
+
+<style>
+	.case-study-meta {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1px;
+		margin-bottom: clamp(3rem, 6vw, 5rem);
+		border: 1px solid var(--page-rule);
+		background: var(--page-rule);
+	}
+
+	.case-study-meta > div {
+		padding: 1rem;
+		background: var(--page-bg);
+	}
+
+	.case-study-meta p,
+	.case-study-meta li {
+		font-size: clamp(0.92rem, 1.1vw, 1rem);
+		font-weight: 300;
+		line-height: 1.4;
+		color: rgba(248, 247, 244, 0.82);
+	}
+
+	.case-study-meta__label {
+		margin-bottom: 0.75rem;
+		font-size: 0.72rem !important;
+		font-weight: 600 !important;
+		letter-spacing: 0.12em;
+		line-height: 1 !important;
+		text-transform: uppercase;
+		color: var(--page-muted) !important;
+	}
+
+	.case-study-meta ul {
+		display: grid;
+		gap: 0.35rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.case-study-figure {
+		margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+	}
+
+	.case-study-figure img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border: 1px solid var(--page-rule);
+		border-radius: 4px;
+		background: rgba(248, 247, 244, 0.04);
+	}
+
+	.case-study-figure figcaption {
+		max-width: 46rem;
+		margin-top: 0.85rem;
+		font-size: 0.88rem;
+		font-weight: 300;
+		line-height: 1.45;
+		color: var(--page-muted);
+	}
+
+	.case-study-figure--wide {
+		width: min(100%, 900px);
+	}
+
+	@media (max-width: 900px) {
+		.case-study-meta {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 620px) {
+		.case-study-meta {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

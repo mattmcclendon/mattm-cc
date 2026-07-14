@@ -22,7 +22,7 @@ const resumeEntries = [
     location: 'San Jose, CA',
     text: 'Led UX strategy and design for a data-intensive analytics platform, building the design function and improving onboarding, adoption, cognitive load, and decision reliability.',
     links: [
-      { label: 'Case Study', href: '/read/studies/case-studies/content/dremio' },
+      { label: 'Case Study', href: '/case-studies/dremio/' },
       { label: 'Field Study', href: '/read/studies/field-studies/content/dremio' },
     ],
   },
@@ -33,7 +33,7 @@ const resumeEntries = [
     location: 'San Jose, CA',
     text: 'Designed AI-powered automation workflows, human-in-the-loop systems, explainable interaction models, telemetry, feedback systems, and operational controls for enterprise clients.',
     links: [
-      { label: 'Case Study', href: '/read/studies/case-studies/content/automation-anywhere' },
+      { label: 'Case Study', href: '/case-studies/automation-anywhere/' },
       { label: 'Field Study', href: '/read/studies/field-studies/content/automation-anywhere' },
     ],
   },
@@ -44,7 +44,7 @@ const resumeEntries = [
     location: 'San Francisco, CA',
     text: 'Worked with executive leadership on early AI and data-driven decision systems in a regulated environment, translating ML and NLP capabilities into usable product concepts.',
     links: [
-      { label: 'Case Study', href: '/read/studies/case-studies/content/wells-fargo' },
+      { label: 'Case Study', href: '/case-studies/wells-fargo/' },
       { label: 'Field Study', href: '/read/studies/field-studies/content/wells-fargo' },
     ],
   },
@@ -55,6 +55,7 @@ const resumeEntries = [
     location: 'San Jose, CA',
     text: 'Guided early-stage enterprise and data-driven product teams from concept toward scalable system design, usability, workflow clarity, and long-term product integrity.',
     links: [
+	  { label: 'Case Study', href: '/case-studies/ca-technologies/' },
       { label: 'Field Study', href: '/read/studies/field-studies/content/ca-technologies' },
     ],
   },
@@ -109,8 +110,8 @@ const capabilities = [
 									<li>
 										<a
 											href={link.href}
-											target="_blank"
-											rel="noopener noreferrer"
+											target={link.href.startsWith('http') ? '_blank' : undefined}
+											rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
 										>
 											{link.label}
 										</a>
