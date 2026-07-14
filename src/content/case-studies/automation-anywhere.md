@@ -1,5 +1,6 @@
 ---
 title: "Designing Human-in-the-Loop Control for AI Automation"
+shortTitle: "Human-in-the-Loop"
 description: "Restructuring AI-driven automation at Automation Anywhere to improve trust, control, and decision clarity in high-stakes workflows."
 company: "Automation Anywhere"
 role: "UX Strategy & Intelligent Automation Lead (Principal)"

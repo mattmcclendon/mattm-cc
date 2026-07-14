@@ -45,12 +45,12 @@ const groups = [
 									</span>
 									<span class="case-study-list__body">
 										<span class="case-study-list__meta">
-											{study.data.company} · {study.data.timeframe}
+											{study.data.shortTitle} · {study.data.company} · {study.data.timeframe}
 										</span>
 										<span class="case-study-list__title">{study.data.title}</span>
 										<span class="case-study-list__description">{study.data.description}</span>
 									</span>
-									<span class="case-study-list__arrow" aria-hidden="true">↗</span>
+									<span class="case-study-list__arrow" aria-hidden="true">→</span>
 								</a>
 							</li>
 						))}
@@ -105,12 +105,15 @@ const groups = [
 	}
 
 	.case-study-list a {
+		position: relative;
 		display: grid;
-		grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+		grid-template-columns: 3.5rem minmax(0, 1fr);
 		gap: clamp(1rem, 3vw, 2.25rem);
 		align-items: start;
 		padding-block: clamp(1.75rem, 4vw, 3rem);
+		padding-right: 2.25rem;
 		color: inherit;
+		text-decoration: none;
 	}
 
 	.case-study-list__number,
@@ -151,7 +154,10 @@ const groups = [
 	}
 
 	.case-study-list__arrow {
-		font-size: 1.2rem;
+		position: absolute;
+		top: clamp(1.75rem, 4vw, 3rem);
+		right: 0;
+		font-size: 1.25rem;
 		line-height: 1;
 		color: var(--page-muted);
 		transition: color 180ms ease, transform 180ms ease;
@@ -163,7 +169,7 @@ const groups = [
 	}
 
 	.case-study-list a:hover .case-study-list__arrow {
-		transform: translate(0.2rem, -0.2rem);
+		transform: translateX(0.2rem);
 	}
 
 	@media (max-width: 760px) {
@@ -173,7 +179,7 @@ const groups = [
 		}
 
 		.case-study-list a {
-			grid-template-columns: 2rem minmax(0, 1fr) auto;
+			grid-template-columns: 2rem minmax(0, 1fr);
 		}
 
 		.case-study-list__title {

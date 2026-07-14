@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../../components/page-layout.astro';
+import NorthEastArrow from '../../components/icons/north-east-arrow.astro';
 const resumeEntries = [
   {
     years: '2026–Present',
@@ -14,6 +15,10 @@ const resumeEntries = [
     organization: 'Amid the Noise',
     location: 'San Francisco, CA',
     text: 'Lead a design and research practice focused on AI-enabled systems, decision workflows, interpretability, escalation, accountability, and human-AI collaboration.',
+    links: [
+      { label: 'HARMONIC Case Study', href: '/case-studies/harmonic-framework/' },
+      { label: 'Decision Systems Case Study', href: '/case-studies/designing-decision-systems-under-uncertainty/' },
+    ],
   },
   {
     years: '2021–2022',
@@ -22,8 +27,8 @@ const resumeEntries = [
     location: 'San Jose, CA',
     text: 'Led UX strategy and design for a data-intensive analytics platform, building the design function and improving onboarding, adoption, cognitive load, and decision reliability.',
     links: [
-      { label: 'Case Study', href: '/case-studies/dremio/' },
-      { label: 'Field Study', href: '/read/studies/field-studies/content/dremio' },
+      { label: 'Decision Clarity Case Study', href: '/case-studies/dremio/' },
+      { label: 'Versioned Data Workflows Case Study', href: '/case-studies/dremio-enterprise-systems/' },
     ],
   },
   {
@@ -33,8 +38,7 @@ const resumeEntries = [
     location: 'San Jose, CA',
     text: 'Designed AI-powered automation workflows, human-in-the-loop systems, explainable interaction models, telemetry, feedback systems, and operational controls for enterprise clients.',
     links: [
-      { label: 'Case Study', href: '/case-studies/automation-anywhere/' },
-      { label: 'Field Study', href: '/read/studies/field-studies/content/automation-anywhere' },
+      { label: 'Human-in-the-Loop Case Study', href: '/case-studies/automation-anywhere/' },
     ],
   },
   {
@@ -44,8 +48,7 @@ const resumeEntries = [
     location: 'San Francisco, CA',
     text: 'Worked with executive leadership on early AI and data-driven decision systems in a regulated environment, translating ML and NLP capabilities into usable product concepts.',
     links: [
-      { label: 'Case Study', href: '/case-studies/wells-fargo/' },
-      { label: 'Field Study', href: '/read/studies/field-studies/content/wells-fargo' },
+      { label: 'Decision Governance Case Study', href: '/case-studies/wells-fargo/' },
     ],
   },
   {
@@ -55,8 +58,7 @@ const resumeEntries = [
     location: 'San Jose, CA',
     text: 'Guided early-stage enterprise and data-driven product teams from concept toward scalable system design, usability, workflow clarity, and long-term product integrity.',
     links: [
-	  { label: 'Case Study', href: '/case-studies/ca-technologies/' },
-      { label: 'Field Study', href: '/read/studies/field-studies/content/ca-technologies' },
+      { label: '0→1 Systems Case Study', href: '/case-studies/ca-technologies/' },
     ],
   },
   {
@@ -65,8 +67,7 @@ const resumeEntries = [
     organization: 'Netscape · Friendster · Yahoo · Autodesk · Evernote',
     text: 'Designed large-scale consumer and enterprise systems across web, mobile, personalization, social systems, content platforms, professional tools, and data environments.',
     links: [
-      { label: 'Field Study', href: '/read/studies/field-studies/content/netscape' },
-      { label: 'Field Study', href: '/read/studies/field-studies/content/friendster' },
+      { label: 'Systems Foundations Case Study', href: '/case-studies/designing-systems-before-they-were-called-systems/' },
     ],
   },
 ];
@@ -132,6 +133,19 @@ const capabilities = [
 				<li>{capability}</li>
 			))}
 		</ul>
+	</section>
+
+	<section class="page-section" aria-labelledby="field-studies-title">
+		<h2 id="field-studies-title">Field Studies</h2>
+		<div class="resume-crosslink">
+			<p>
+				Case studies document concrete problems, decisions, and outcomes. At Amid the Noise, field studies are more interpretive: they return to lived professional and civic experiences to examine what those environments reveal about systems, institutions, trust, and decision-making.
+			</p>
+			<a href="https://amidthenoise.com/research/field-studies/" target="_blank" rel="noopener noreferrer">
+				<span>Explore Field Studies at Amid the Noise</span>
+				<NorthEastArrow />
+			</a>
+		</div>
 	</section>
 </PageLayout>
 
@@ -207,20 +221,21 @@ const capabilities = [
 		flex-wrap: wrap;
 		gap: 0.75rem 1rem;
 		margin-top: 1.25rem;
-		font-size: 0.78rem;
-		font-weight: 600;
-		letter-spacing: 0.1em;
-		line-height: 1;
-		text-transform: uppercase;
-		color: var(--page-soft);
+		font-size: 0.9rem;
+		font-weight: 500;
+		letter-spacing: 0.01em;
+		line-height: 1.35;
+		color: var(--link-color);
 	}
 
 	.entry-links a {
-		transition: color 180ms ease;
+		color: var(--link-color);
+		text-decoration-color: var(--link-decoration);
 	}
 
 	.entry-links a:hover {
-		color: var(--page-accent);
+		color: var(--page-text);
+		text-decoration-color: currentColor;
 	}
 
 	.capability-list {
@@ -239,6 +254,38 @@ const capabilities = [
 		font-weight: 300;
 		letter-spacing: -0.01em;
 		line-height: 1.35;
+	}
+
+	.resume-crosslink {
+		max-width: 760px;
+	}
+
+	.resume-crosslink p {
+		font-size: clamp(1rem, 1.35vw, 1.16rem);
+		font-weight: 300;
+		letter-spacing: -0.01em;
+		line-height: 1.55;
+		color: rgba(248, 247, 244, 0.82);
+	}
+
+	.resume-crosslink a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		margin-top: 1.25rem;
+		font-size: 0.95rem;
+		font-weight: 500;
+		letter-spacing: 0.01em;
+	}
+
+	.resume-crosslink a .direction-arrow {
+		width: 0.85rem;
+		height: 0.85rem;
+		transition: transform 180ms ease;
+	}
+
+	.resume-crosslink a:hover .direction-arrow {
+		transform: translate(0.12rem, -0.12rem);
 	}
 
 	@media (max-width: 760px) {

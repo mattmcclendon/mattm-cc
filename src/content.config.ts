@@ -5,10 +5,11 @@ import { z } from 'astro/zod';
 const caseStudies = defineCollection({
 	loader: glob({
 		base: './src/content/case-studies',
-		pattern: ['**/*.md', '!dremio-enterprise-systems.md'],
+		pattern: '**/*.md',
 	}),
 	schema: z.object({
 		title: z.string(),
+		shortTitle: z.string(),
 		description: z.string(),
 		company: z.string(),
 		role: z.string(),

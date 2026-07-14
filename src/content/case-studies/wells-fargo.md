@@ -1,5 +1,6 @@
 ---
 title: "Designing Decision Governance in Regulated AI Systems"
+shortTitle: "Decision Governance"
 description: "Enabling safe, testable AI adoption at Wells Fargo by designing decision frameworks that balance innovation with risk, compliance, and accountability."
 company: "Wells Fargo"
 role: "AI Governance and Decision Systems Lead"

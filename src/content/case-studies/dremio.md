@@ -1,5 +1,6 @@
 ---
 title: "Designing Decision Clarity in Distributed Data Systems"
+shortTitle: "Decision Clarity"
 description: "Restructuring data workflows at Dremio to reduce ambiguity, improve trust, and accelerate decision-making across enterprise environments."
 company: "Dremio"
 role: "Principal Product Designer"

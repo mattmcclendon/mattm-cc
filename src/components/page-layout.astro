@@ -5,6 +5,7 @@ import SiteFooter from './site-footer.astro';
 interface Props {
 	title: string;
 	intro: string;
+	eyebrow?: string;
 	description?: string;
 	current?: 'home' | 'chronology' | 'resume' | 'case-studies' | 'about';
 	variant?: 'standard' | 'legal' | 'case-study';
@@ -13,6 +14,7 @@ interface Props {
 const {
 	title,
 	intro,
+	eyebrow,
 	description = intro,
 	current = 'home',
 	variant = 'standard',
@@ -33,6 +35,7 @@ const {
 
 		<main class={`page-shell page-shell--${variant}`}>
 			<section class="page-intro" aria-labelledby="page-title">
+				{eyebrow && <p class="page-eyebrow">{eyebrow}</p>}
 				<h1 id="page-title">{title}</h1>
 				<p>{intro}</p>
 			</section>
@@ -57,6 +60,8 @@ const {
 		--page-rule: rgba(248, 247, 244, 0.14);
 		--page-accent: #5e573f;
 		--brand-color: #5e573f;
+		--link-color: rgba(248, 247, 244, 0.92);
+		--link-decoration: rgba(248, 247, 244, 0.58);
 	}
 
 	* {
@@ -75,13 +80,24 @@ const {
 	}
 
 	a {
-		color: inherit;
-		text-decoration: none;
-		transition: color 180ms ease;
+		color: var(--link-color);
+		text-decoration-line: underline;
+		text-decoration-color: var(--link-decoration);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.22em;
+		text-decoration-skip-ink: auto;
+		transition: color 180ms ease, text-decoration-color 180ms ease, text-decoration-thickness 180ms ease;
 	}
 
 	a:hover {
-		color: var(--page-accent);
+		color: var(--page-text);
+		text-decoration-color: currentColor;
+		text-decoration-thickness: 2px;
+	}
+
+	a:focus-visible {
+		outline: 2px solid var(--page-text);
+		outline-offset: 4px;
 	}
 
 	.site-header,
@@ -98,6 +114,16 @@ const {
 	.page-intro {
 		max-width: 800px;
 		padding-bottom: clamp(4rem, 8vw, 7rem);
+	}
+
+	.page-intro .page-eyebrow {
+		margin: 0 0 1rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		line-height: 1.2;
+		text-transform: uppercase;
+		color: var(--link-color);
 	}
 
 	h1,

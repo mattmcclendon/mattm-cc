@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { study } = Astro.props;
-const { title, description, company, role, timeframe, tags } = study.data;
+const { title, shortTitle, description, company, role, timeframe, tags } = study.data;
 ---
 
 <PageLayout
 	title={title}
+	eyebrow={`${shortTitle} Case Study`}
 	intro={description}
 	description={description}
 	current="case-studies"
@@ -190,6 +191,27 @@ const { title, description, company, role, timeframe, tags } = study.data;
 		background: rgba(248, 247, 244, 0.04);
 	}
 
+	.case-study-prose .case-study-figure {
+		margin-block: clamp(2.5rem, 6vw, 4.5rem);
+	}
+
+	.case-study-prose .case-study-figure--wide {
+		width: min(960px, calc(100vw - 3rem));
+	}
+
+	.case-study-prose .case-study-figure img {
+		margin: 0;
+	}
+
+	.case-study-prose .case-study-figure figcaption {
+		max-width: 46rem;
+		margin-top: 0.85rem;
+		font-size: 0.88rem;
+		font-weight: 300;
+		line-height: 1.5;
+		color: var(--page-muted);
+	}
+
 	.case-study-return {
 		margin-top: clamp(5rem, 10vw, 8rem);
 		padding-top: 1.5rem;
@@ -214,6 +236,10 @@ const { title, description, company, role, timeframe, tags } = study.data;
 	@media (max-width: 560px) {
 		.case-study-meta {
 			grid-template-columns: 1fr;
+		}
+
+		.case-study-prose .case-study-figure--wide {
+			width: 100%;
 		}
 	}
 </style>

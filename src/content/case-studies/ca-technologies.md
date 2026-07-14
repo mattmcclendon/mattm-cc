@@ -1,5 +1,6 @@
 ---
 title: "Designing 0→1 Systems Inside a Legacy Enterprise"
+shortTitle: "0→1 Systems"
 description: "Leading internal incubation at CA Technologies to de-risk emerging technologies and build new product pathways beyond legacy enterprise constraints."
 company: "CA Technologies"
 role: "Principal Product Designer, Entrepreneur-in-Residence"

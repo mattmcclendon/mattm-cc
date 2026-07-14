@@ -2,6 +2,7 @@
 import Linkedin from './icons/linkedin.astro';
 import Facebook from './icons/facebook.astro';
 import Github from './icons/github.astro';
+import NorthEastArrow from './icons/north-east-arrow.astro';
 ---
 
 <footer class="site-footer">
@@ -12,7 +13,7 @@ import Github from './icons/github.astro';
 			<a href="/legal/privacy-policy/">Privacy Policy</a>
 			<a href="/legal/terms-of-use/">Terms of Use</a>
 			<a href="/legal/usage-and-attribution/">Usage &amp; Attribution</a>
-			<a href="#page-title" class="back-to-top" aria-label="Back to top">↗</a>
+			<a href="#page-title" class="back-to-top" aria-label="Back to top"><NorthEastArrow /></a>
 		</nav>
 
 		<div class="footer-social" aria-label="Social links">
@@ -36,7 +37,7 @@ import Github from './icons/github.astro';
 		letter-spacing: 0.12em;
 		line-height: 1;
 		text-transform: uppercase;
-		color: var(--page-muted);
+		color: rgba(248, 247, 244, 0.78);
 	}
 
 	.site-footer p {
@@ -50,7 +51,7 @@ import Github from './icons/github.astro';
 	}
 
 	.site-footer a:hover {
-		color: var(--page-accent);
+		color: var(--page-text);
 	}
 
 	.footer-right {
@@ -104,12 +105,23 @@ import Github from './icons/github.astro';
 	}
 
 	.back-to-top {
-		opacity: 0.45;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 1.5rem;
+		min-height: 1.5rem;
+		opacity: 1;
 		font-size: 1rem;
+		color: var(--page-text);
 		transition:
 			opacity 180ms ease,
 			color 180ms ease,
 			transform 180ms ease;
+	}
+
+	.back-to-top :global(.direction-arrow) {
+		width: 1.15rem;
+		height: 1.15rem;
 	}
 
 	.back-to-top:hover {

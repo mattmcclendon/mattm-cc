@@ -1,5 +1,6 @@
 ---
 title: "Designing Access in Civic Decision Systems"
+shortTitle: "Civic Access"
 description: "Examining how large-scale voting systems establish access, trust, and defensibility through language, staffing, and observable design."
 company: "Santa Clara County Registrar of Voters"
 role: "Vote Center Operations"

@@ -1,5 +1,6 @@
 ---
 title: "Designing Systems Before They Were Called Systems"
+shortTitle: "Systems Foundations"
 description: "Early lessons from Friendster, Autodesk, and Evernote on how systems can appear to function while failing beneath the surface—and how those patterns shape system design today."
 company: "Friendster · Autodesk · Evernote"
 role: "Product Design & Systems Innovation"

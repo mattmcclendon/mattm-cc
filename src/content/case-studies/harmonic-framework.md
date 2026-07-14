@@ -1,5 +1,6 @@
 ---
 title: "HARMONIC: Designing Trust Under Uncertainty"
+shortTitle: "HARMONIC"
 description: "An applied framework for translating probabilistic AI outputs into structured signals that support human judgment, escalation, and trust."
 company: "HARMONIC Framework · Amid the Noise"
 role: "Author"

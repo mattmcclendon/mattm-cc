@@ -1,5 +1,6 @@
 ---
 title: "Designing Decision Systems Under Uncertainty"
+shortTitle: "Decision Systems"
 description: "Operating inside ambiguous environments to surface decision boundaries, align stakeholders, and make complex systems actionable."
 company: "Amid the Noise"
 role: "Advisory & System Design"
