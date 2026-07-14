@@ -39,17 +39,8 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 				<div class="paper-meta">
 					<p>{readingTime} min read</p>
 				</div>
-				<h2 id="paper-title" class="sr-only">{paper.data.title}</h2>
-				<p class="sr-only">{paper.data.subtitle}</p>
-				<img
-					class="paper-hero"
-					src={paper.data.heroImage}
-					alt={paper.data.heroAlt}
-					width="1920"
-					height="1080"
-					loading="eager"
-					fetchpriority="high"
-				/>
+				<h2 id="paper-title">{paper.data.title}</h2>
+				<p class="paper-subtitle">{paper.data.subtitle}</p>
 			</header>
 
 			<div class="paper-body">
@@ -98,10 +89,10 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 	}
 
 	.philosophy-equation {
-		display: grid;
-		grid-template-columns: minmax(0, 0.8fr) minmax(16rem, 1.2fr);
-		align-items: end;
-		gap: clamp(1.5rem, 5vw, 5rem);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1.25rem;
 		margin-top: clamp(3rem, 7vw, 6rem);
 		padding-top: clamp(2rem, 4vw, 3rem);
 		border-top: 1px solid var(--page-rule);
@@ -112,7 +103,8 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 	}
 
 	.philosophy-equation__formula {
-		font-size: clamp(2.6rem, 6vw, 5.75rem);
+		max-width: 100%;
+		font-size: clamp(2.25rem, 7vw, 5.75rem);
 		font-weight: 500;
 		letter-spacing: -0.065em;
 		line-height: 0.95;
@@ -129,14 +121,20 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 	}
 
 	.paper {
-		padding-top: clamp(2rem, 4vw, 3rem);
+		padding-top: clamp(3rem, 6vw, 5rem);
 		border-top: 1px solid var(--page-rule);
+	}
+
+	.paper-header {
+		width: min(100%, 920px);
+		margin-inline: auto;
+		padding-bottom: clamp(3rem, 7vw, 5.5rem);
 	}
 
 	.paper-meta {
 		display: flex;
-		justify-content: flex-end;
-		margin-bottom: 1rem;
+		justify-content: flex-start;
+		margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 		font-size: 0.78rem;
 		font-weight: 600;
 		letter-spacing: 0.1em;
@@ -149,16 +147,28 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 		margin: 0;
 	}
 
-	.paper-hero {
-		display: block;
-		width: 100%;
-		height: auto;
-		background: #06080d;
+	.paper-header h2 {
+		max-width: 900px;
+		margin: 0;
+		font-size: clamp(3rem, 7.5vw, 6.75rem);
+		font-weight: 500;
+		letter-spacing: -0.075em;
+		line-height: 0.92;
+	}
+
+	.paper-subtitle {
+		max-width: 700px;
+		margin: clamp(1.25rem, 2.5vw, 2rem) 0 0;
+		font-size: clamp(1.15rem, 2vw, 1.65rem);
+		font-weight: 300;
+		letter-spacing: -0.025em;
+		line-height: 1.35;
+		color: var(--page-muted);
 	}
 
 	.paper-body {
 		width: min(100%, 760px);
-		margin: clamp(4rem, 8vw, 7rem) auto 0;
+		margin: 0 auto;
 	}
 
 	.paper-body :global(h2) {
@@ -220,30 +230,9 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 		margin: 0;
 	}
 
-	.sr-only {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border: 0;
-	}
-
 	@media (max-width: 700px) {
-		.philosophy-equation {
-			grid-template-columns: 1fr;
-			align-items: start;
-		}
-
 		.philosophy-equation__formula {
-			white-space: normal;
-		}
-
-		.paper-meta {
-			justify-content: flex-start;
+			font-size: clamp(2.1rem, 11vw, 3.2rem);
 		}
 	}
 </style>
