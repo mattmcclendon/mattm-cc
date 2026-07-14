@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SeoHead from './seo-head.astro';
 
 interface Props {
 	title?: string;
@@ -16,12 +17,11 @@ const {
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<link rel="stylesheet" href="https://use.typekit.net/bma7jnq.css" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="generator" content={Astro.generator} />
+	<SeoHead title={title} description={description} />
+	<link rel="stylesheet" href="https://use.typekit.net/bma7jnq.css" />
 	</head>
 	<body class={bodyClass}>
 		<slot />
