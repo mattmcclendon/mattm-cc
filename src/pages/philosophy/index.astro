@@ -112,12 +112,13 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 	}
 
 	.philosophy-equation__key {
-		max-width: 28rem;
+		max-width: 100%;
 		font-size: clamp(1rem, 1.45vw, 1.25rem);
 		font-weight: 300;
 		letter-spacing: -0.015em;
 		line-height: 1.45;
 		color: var(--page-muted);
+		white-space: nowrap;
 	}
 
 	.paper {
@@ -233,6 +234,10 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 	@media (max-width: 700px) {
 		.philosophy-equation__formula {
 			font-size: clamp(1.9rem, 9.5vw, 2.8rem);
+		}
+
+		.philosophy-equation__key {
+			white-space: normal;
 		}
 	}
 </style>
