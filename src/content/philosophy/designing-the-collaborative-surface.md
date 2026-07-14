@@ -3,8 +3,8 @@ title: "Designing the Collaborative Surface"
 subtitle: "Composing Teams That Can Produce What No Individual Could Create Alone"
 description: "A design philosophy for composing distinct capabilities, shared vernacular, governance, and facilitation into collaborative surfaces that produce stronger decisions and better products."
 pubDate: "2026-07-14"
-heroImage: "/img/philosophy/designing-the-collaborative-surface.png"
-heroAlt: "Abstract intersecting planes and trajectories converging into a shared surface beneath the title Designing the Collaborative Surface."
+heroImage: "/img/philosophy/designing-the-collaborative-surface-mattm.png"
+heroAlt: "Abstract graphite, bronze, and slate trajectories converging into a shared surface against a dark field."
 tags: ["Design", "Leadership", "Systems Thinking"]
 sourceUrl: "https://amidthenoise.com/writing/papers/designing-the-collaborative-surface/"
 ---
