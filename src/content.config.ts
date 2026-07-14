@@ -23,4 +23,21 @@ const caseStudies = defineCollection({
 	}),
 });
 
-export const collections = { caseStudies };
+const philosophy = defineCollection({
+	loader: glob({
+		base: './src/content/philosophy',
+		pattern: '**/*.md',
+	}),
+	schema: z.object({
+		title: z.string(),
+		subtitle: z.string(),
+		description: z.string(),
+		pubDate: z.coerce.date(),
+		heroImage: z.string(),
+		heroAlt: z.string(),
+		tags: z.array(z.string()).default([]),
+		sourceUrl: z.string().url(),
+	}),
+});
+
+export const collections = { caseStudies, philosophy };

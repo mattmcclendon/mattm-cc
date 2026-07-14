@@ -1,0 +1,249 @@
+---
+import { getEntry, render } from 'astro:content';
+import BaseLayout from '../../components/base-layout.astro';
+import SiteHeader from '../../components/site-header.astro';
+import SiteFooter from '../../components/site-footer.astro';
+
+const paper = await getEntry('philosophy', 'designing-the-collaborative-surface');
+
+if (!paper) {
+	throw new Error('The design philosophy paper could not be found.');
+}
+
+const { Content } = await render(paper);
+const wordCount = paper.body.trim().split(/\s+/).length;
+const readingTime = Math.max(1, Math.ceil(wordCount / 240));
+---
+
+<BaseLayout
+	title="Philosophy | Matthew McClendon"
+	description="Matthew McClendon's design philosophy: composing collaborative surfaces that bring distinct capability vectors into productive contact."
+>
+	<SiteHeader current="philosophy" />
+
+	<main class="philosophy-shell">
+		<section class="philosophy-intro" aria-labelledby="philosophy-title">
+			<h1 id="philosophy-title">Philosophy</h1>
+			<p>
+				My design philosophy is a theory of composition. I build collaborative surfaces that bring distinct capability vectors into productive contact, establish enough shared language to make those capabilities interoperable, and facilitate their synthesis into outcomes none of us could produce alone.
+			</p>
+
+			<div class="philosophy-equation" aria-label="Collaborative Surfaces multiplied by Capability Vectors equals Productive Contact">
+				<p class="philosophy-equation__formula">CS × CV = PC</p>
+				<p class="philosophy-equation__key">Collaborative Surfaces × Capability Vectors = Productive Contact</p>
+			</div>
+		</section>
+
+		<article class="paper" aria-labelledby="paper-title">
+			<header class="paper-header">
+				<div class="paper-meta">
+					<p>{readingTime} min read</p>
+				</div>
+				<h2 id="paper-title" class="sr-only">{paper.data.title}</h2>
+				<p class="sr-only">{paper.data.subtitle}</p>
+				<img
+					class="paper-hero"
+					src={paper.data.heroImage}
+					alt={paper.data.heroAlt}
+					width="1920"
+					height="1080"
+					loading="eager"
+					fetchpriority="high"
+				/>
+			</header>
+
+			<div class="paper-body">
+				<Content />
+			</div>
+
+			<footer class="paper-source">
+				<p>
+					Also published as a design paper on
+					<a href={paper.data.sourceUrl} target="_blank" rel="noopener noreferrer">Amid the Noise</a>.
+				</p>
+			</footer>
+		</article>
+	</main>
+
+	<SiteFooter />
+</BaseLayout>
+
+<style>
+	.philosophy-shell {
+		width: min(100% - 2rem, 1180px);
+		margin-inline: auto;
+		padding-block: clamp(4rem, 8vw, 7rem);
+	}
+
+	.philosophy-intro {
+		max-width: 930px;
+		padding-bottom: clamp(4.5rem, 9vw, 8rem);
+	}
+
+	.philosophy-intro h1 {
+		font-size: clamp(4rem, 10vw, 8rem);
+		font-weight: 600;
+		letter-spacing: -0.085em;
+		line-height: 0.9;
+	}
+
+	.philosophy-intro > p {
+		max-width: 850px;
+		margin-top: 1.5rem;
+		font-size: clamp(1.25rem, 2.2vw, 2rem);
+		font-weight: 300;
+		letter-spacing: -0.03em;
+		line-height: 1.28;
+		color: rgba(248, 247, 244, 0.82);
+	}
+
+	.philosophy-equation {
+		display: grid;
+		grid-template-columns: minmax(0, 0.8fr) minmax(16rem, 1.2fr);
+		align-items: end;
+		gap: clamp(1.5rem, 5vw, 5rem);
+		margin-top: clamp(3rem, 7vw, 6rem);
+		padding-top: clamp(2rem, 4vw, 3rem);
+		border-top: 1px solid var(--page-rule);
+	}
+
+	.philosophy-equation p {
+		margin: 0;
+	}
+
+	.philosophy-equation__formula {
+		font-size: clamp(2.6rem, 6vw, 5.75rem);
+		font-weight: 500;
+		letter-spacing: -0.065em;
+		line-height: 0.95;
+		white-space: nowrap;
+	}
+
+	.philosophy-equation__key {
+		max-width: 28rem;
+		font-size: clamp(1rem, 1.45vw, 1.25rem);
+		font-weight: 300;
+		letter-spacing: -0.015em;
+		line-height: 1.45;
+		color: var(--page-muted);
+	}
+
+	.paper {
+		padding-top: clamp(2rem, 4vw, 3rem);
+		border-top: 1px solid var(--page-rule);
+	}
+
+	.paper-meta {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 1rem;
+		font-size: 0.78rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		line-height: 1;
+		text-transform: uppercase;
+		color: var(--page-muted);
+	}
+
+	.paper-meta p {
+		margin: 0;
+	}
+
+	.paper-hero {
+		display: block;
+		width: 100%;
+		height: auto;
+		background: #f8f7f4;
+	}
+
+	.paper-body {
+		width: min(100%, 760px);
+		margin: clamp(4rem, 8vw, 7rem) auto 0;
+	}
+
+	.paper-body :global(h2) {
+		margin: clamp(4rem, 8vw, 7rem) 0 1.5rem;
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		font-weight: 500;
+		letter-spacing: -0.055em;
+		line-height: 1;
+	}
+
+	.paper-body :global(p) {
+		margin: 0 0 1.35rem;
+		font-size: clamp(1.05rem, 1.35vw, 1.18rem);
+		font-weight: 300;
+		letter-spacing: -0.01em;
+		line-height: 1.72;
+		color: rgba(248, 247, 244, 0.84);
+	}
+
+	.paper-body :global(em) {
+		color: rgba(248, 247, 244, 0.92);
+	}
+
+	.paper-body :global(strong) {
+		font-weight: 500;
+		color: var(--page-text);
+	}
+
+	.paper-body :global(p:has(> strong:only-child)) {
+		margin-block: clamp(3rem, 7vw, 5.5rem);
+		padding-left: clamp(1.25rem, 3vw, 2rem);
+		border-left: 2px solid var(--page-accent);
+		font-size: clamp(1.45rem, 2.7vw, 2.35rem);
+		letter-spacing: -0.035em;
+		line-height: 1.22;
+	}
+
+	.paper-body :global(hr) {
+		margin: clamp(4rem, 8vw, 7rem) 0;
+		border: 0;
+		border-top: 1px solid var(--page-rule);
+	}
+
+	.paper-body :global(a) {
+		color: var(--page-text);
+	}
+
+	.paper-source {
+		width: min(100%, 760px);
+		margin: clamp(4rem, 8vw, 7rem) auto 0;
+		padding-top: 2rem;
+		border-top: 1px solid var(--page-rule);
+		font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+		line-height: 1.6;
+		color: var(--page-muted);
+	}
+
+	.paper-source p {
+		margin: 0;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	@media (max-width: 700px) {
+		.philosophy-equation {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+
+		.philosophy-equation__formula {
+			white-space: normal;
+		}
+
+		.paper-meta {
+			justify-content: flex-start;
+		}
+	}
+</style>
