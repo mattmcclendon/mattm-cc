@@ -1,0 +1,46 @@
+---
+interface Props {
+	current?: 'home' | 'chronology' | 'resume' | 'philosophy' | 'case-studies' | 'about';
+}
+
+const { current = 'home' } = Astro.props;
+---
+
+<nav class="primary-nav" aria-label="Primary navigation">
+	<a href="/" aria-current={current === 'home' ? 'page' : undefined}>Home</a>
+	<a href="/resume/" aria-current={current === 'resume' ? 'page' : undefined}>Résumé</a>
+	<a href="/philosophy/" aria-current={current === 'philosophy' ? 'page' : undefined}>Philosophy</a>
+	<a href="/case-studies/" aria-current={current === 'case-studies' ? 'page' : undefined}>Case Studies</a>
+	<a href="/about-matthew/" aria-current={current === 'about' ? 'page' : undefined}>About</a>
+</nav>
+
+<style>
+	.primary-nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.5rem;
+		justify-content: flex-end;
+		font-size: clamp(0.78rem, 1vw, 0.9rem);
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.primary-nav a {
+		color: var(--page-muted);
+		text-decoration: none;
+		transition: color 180ms ease;
+	}
+
+	.primary-nav a:hover,
+	.primary-nav a[aria-current='page'] {
+		color: var(--page-accent);
+	}
+
+	@media (max-width: 760px) {
+		.primary-nav {
+			justify-content: flex-start;
+		}
+	}
+</style>
