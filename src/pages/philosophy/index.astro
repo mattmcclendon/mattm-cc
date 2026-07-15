@@ -1,5 +1,6 @@
 ---
 import { getEntry, render } from 'astro:content';
+import '@fontsource/stix-two-math/400.css';
 import BaseLayout from '../../components/base-layout.astro';
 import SiteHeader from '../../components/site-header.astro';
 import SiteFooter from '../../components/site-footer.astro';
@@ -29,7 +30,13 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 			</p>
 
 			<div class="philosophy-equation" aria-label="Collaborative Surfaces multiplied by Capability Vectors equals Productive Contact">
-				<p class="philosophy-equation__formula">CS × CV = PC</p>
+				<p class="philosophy-equation__formula">
+					<span>CS</span>
+					<span class="philosophy-equation__operator">×</span>
+					<span>CV</span>
+					<span class="philosophy-equation__operator">=</span>
+					<span class="philosophy-equation__result">PC</span>
+				</p>
 				<p class="philosophy-equation__key">Collaborative Surfaces × Capability Vectors = Productive Contact</p>
 			</div>
 		</section>
@@ -104,15 +111,28 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 
 	.philosophy-equation__formula {
 		max-width: 100%;
-		font-size: clamp(2rem, 5vw, 4.5rem);
-		font-weight: 500;
-		letter-spacing: -0.065em;
-		line-height: 0.95;
+		font-family: 'STIX Two Math', serif;
+		font-size: clamp(1.35rem, 3.35vw, 3rem);
+		font-weight: 400;
+		letter-spacing: -0.015em;
+		line-height: 1;
+		color: var(--page-text);
 		white-space: nowrap;
+	}
+
+	.philosophy-equation__operator {
+		display: inline-block;
+		margin-inline: 0.12em;
+		color: inherit;
+	}
+
+	.philosophy-equation__result {
+		color: inherit;
 	}
 
 	.philosophy-equation__key {
 		max-width: 100%;
+		font-family: sofia-pro, ui-sans-serif, system-ui, sans-serif;
 		font-size: clamp(1rem, 1.45vw, 1.25rem);
 		font-weight: 300;
 		letter-spacing: -0.015em;
@@ -234,7 +254,7 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 
 	@media (max-width: 700px) {
 		.philosophy-equation__formula {
-			font-size: clamp(1.9rem, 9.5vw, 2.8rem);
+			font-size: clamp(1.35rem, 6.5vw, 2rem);
 		}
 
 		.philosophy-equation__key {
