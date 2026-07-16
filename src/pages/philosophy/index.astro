@@ -54,6 +54,17 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 				<Content />
 			</div>
 
+			<div class="paper-signature">
+				<img
+					src="/img/mmc-signature-001.png"
+					alt="Matthew McClendon"
+					width="4397"
+					height="1243"
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
+
 			<footer class="paper-source">
 				<p>
 					Also published as a design paper on{' '}
@@ -236,6 +247,19 @@ const readingTime = Math.max(1, Math.ceil(wordCount / 240));
 
 	.paper-body :global(a) {
 		color: var(--page-text);
+	}
+
+	.paper-signature {
+		width: min(100%, 760px);
+		margin: clamp(3rem, 6vw, 4.5rem) auto 0;
+	}
+
+	.paper-signature img {
+		display: block;
+		width: 150px;
+		max-width: 42vw;
+		height: auto;
+		opacity: 0.88;
 	}
 
 	.paper-source {
