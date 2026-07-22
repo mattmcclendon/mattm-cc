@@ -165,6 +165,8 @@ Together, we transformed a hated portal into a modern, comprehensible platform w
 
 The result was, honestly, a quantum leap. Yet the interface was only the visible manifestation of the achievement. The deeper accomplishment was collective legibility: we made enough of the system intelligible to enough of the right people that we could change it without pretending its history did not exist.
 
+[Read the Autodesk case study →](/case-studies/autodesk-composing-the-transition/)
+
 ---
 ## CA Technologies: Velocity Through Precomposed Capability
 
@@ -177,6 +179,8 @@ My agency experience resurfaced here. I could help founders translate an emergin
 That composition made the Accelerator fast, but speed was not its most important property. The more significant capability was reconfiguration. When evidence contradicted an assumption, we could pivot without rebuilding the entire organization around the new direction. We changed the composition of the conversation, brought different capabilities into contact with the problem, and moved.
 
 The Accelerator did not merely make individual startups faster. It made the organization better at repeatedly creating startups.
+
+[Read the CA Technologies case study →](/case-studies/ca-technologies/)
 
 ---
 ## Dremio: Contributing at the Edge of Knowledge
@@ -198,6 +202,8 @@ This is not unique to me, nor should it be. A well-composed team does not requir
 The alternative is to treat domain expertise as an admission requirement: first master the territory, then earn the right to influence it. That approach undervalues the outsider’s perception precisely when it is most acute. Newcomers notice terminology, assumptions, and conceptual discontinuities that experts have learned to see through. The objective is not to preserve naïveté, but to convert it into insight before familiarity erases it.
 
 A productive collaborative surface allows the domain to benefit from the newcomer while the newcomer is learning the domain.
+
+[Read the Dremio case study →](/case-studies/dremio-enterprise-systems/)
 
 ---
 ## Facilitation as Design

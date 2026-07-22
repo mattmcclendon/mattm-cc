@@ -6,7 +6,7 @@ company: "Wells Fargo"
 role: "AI Governance and Decision Systems Lead"
 timeframe: "2019 · 6-month engagement"
 group: "selected-work"
-order: 30
+order: 40
 tags: ["AI Governance", "Regulated Systems", "Decision Design"]
 ---
 

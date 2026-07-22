@@ -6,7 +6,7 @@ company: "Dremio"
 role: "Principal Product Designer"
 timeframe: "2021–2022"
 group: "selected-work"
-order: 10
+order: 20
 tags: ["Enterprise UX", "Data Systems", "Workflow Design"]
 ---
 

@@ -1,209 +1,200 @@
 ---
-title: "Designing Collaborative Workflows for Versioned Enterprise Data"
-shortTitle: "Versioned Data Workflows"
-description: "Translating branches, commits, SQL exploration, and merge resolution into an approachable collaboration model for enterprise data teams."
+title: "Moving the Edge at Dremio"
+shortTitle: "Moving the Edge"
+description: "How a collaborative surface enabled designers without deep data-domain expertise to learn through consequential contribution and shape a sophisticated analytics platform."
 company: "Dremio"
 role: "Principal Product Designer"
 timeframe: "2021–2022"
 group: "selected-work"
-order: 15
-tags: ["Enterprise UX", "Data Versioning", "Collaboration", "Workflow Design"]
+order: 10
+tags: ["Design Philosophy", "Enterprise UX", "Data Systems", "Collaborative Learning"]
 ---
 
-## Context
+> I contribute at the edge of what I know, then use collaboration to move that edge.
 
-Dremio’s open lakehouse platform brought analysts, data engineers, and BI teams into a shared workspace while their data remained distributed across cloud storage, object stores, and databases.
+## Entering an Unfamiliar Domain
 
-The strategic opportunity was to let those teams work with data more like software: isolate changes, understand history, review impact, and safely converge on a shared source of truth. The underlying model used familiar source-control concepts—branches, commits, and merges—but most of the people using the product were not Git experts.
+I entered Dremio with only marginal knowledge of the data domain. I was not a data analyst, data engineer, or database architect, and I did not pretend to possess fluency I had not yet earned.
 
-The design problem was not how to expose version control. It was how to translate its protections into a legible human workflow.
+The product did not reward superficial understanding. Dremio’s open lakehouse platform brought analysts, engineers, and business-intelligence teams into a shared environment while their data remained distributed across cloud storage, object stores, databases, and organizational boundaries. The work involved SQL authoring, repositories, metadata, job execution, lineage, permissions, branches, commits, merges, and conflicts. Each concept arrived with its own technical history and with consequences that were not always visible in the interface.
 
-> How might we give enterprise data teams the freedom to experiment without weakening confidence, accountability, or control?
+The conventional response to this kind of domain complexity is sequential: learn the territory first, then earn the right to influence it. That sounds responsible. It is also incomplete.
 
----
+If designers remain spectators until they acquire expert fluency, the product loses access to them during the period when their perception is least habituated. Newcomers notice vocabulary, assumptions, conceptual discontinuities, and missing explanations that experts have learned to see through. Unfamiliarity has a short half-life; the useful move is to convert it into evidence while collaboration turns it into understanding.
 
-## The Problem
+At Dremio, I began contributing where my existing capabilities were immediately credible, then used the collaborative surface around the work to extend the boundary of what I could address. Within approximately six months, I had moved from designing first-time experiences to producing meaningful work on repositories, SQL editors, job monitoring, version histories, and conflict resolution.
 
-Enterprise data work crosses several kinds of complexity at once. New customers must configure infrastructure before they experience value. Analysts move repeatedly between data, SQL, results, and job status. Collaborative changes accumulate over time, and the moments with the greatest risk—reviewing impact, resolving conflicts, and merging work—are also the moments when the system is least forgiving.
+I learned the domain by helping to make it learnable.
 
-A technically complete interface could still leave users asking:
+## Onboarding as Situated Learning
 
-- Where am I working?
-- What changed, and who changed it?
-- Is my branch ahead of or behind the shared version?
-- What will this action affect?
-- Why can’t the system resolve this conflict?
-- Did my work actually complete?
+First-time experience was the natural point of entry. It sat at the edge of what I already knew and what I needed to learn.
 
-The experience needed to answer those questions before asking users to act.
+Onboarding is sometimes treated as explanatory residue: the product has been designed, and someone must now teach people how to survive it. I see it differently. A first-time experience is a compressed model of the product’s conceptual architecture. Designing it forces a team to decide what a user must understand first, which dependencies can remain latent, where the product’s model diverges from expectation, and how complexity should be introduced without distortion.
 
----
+That made onboarding useful in two directions. New customers needed a coherent path into Dremio. I needed a disciplined path into the domain.
 
-## Design Principles
-
-I organized the work around four principles that could remain consistent across otherwise different workflows.
-
-### Orientation before capability
-
-The interface should establish location, state, and the next meaningful step before presenting the full power of the platform.
-
-### Status before action
-
-Users should be able to see branch context, divergence, affected objects, and system state before making a consequential change.
-
-### Progressive disclosure from summary to evidence
-
-The first view should support a fast decision. Deeper schema, SQL, lineage, and file-level detail should remain available when the decision requires it.
-
-### Failure as a first-class workflow
-
-Conflict resolution could not be treated as an edge case. When automation stopped, the interface needed to explain why and give the user enough context to decide safely.
-
----
-
-## 1. Teaching the System Through Onboarding
-
-Enterprise setup often reflects the internal architecture of the product rather than the user’s mental model. I reframed onboarding as a guided sequence that introduced one dependency at a time and made progress persistent.
-
-The project flow established the basic workspace first. A stable left-side sequence taught the platform’s information architecture while showing what was complete and what remained.
+The project-creation flow established the workspace first, then exposed the larger setup sequence without presenting every dependency simultaneously. A persistent structure made progress visible and taught the platform’s information architecture through use.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/1-01-create-project.png" alt="Dremio project creation screen with a persistent onboarding sequence" loading="lazy" decoding="async">
-  <figcaption>Project creation establishes a clear starting point and exposes the larger setup sequence without presenting every dependency at once.</figcaption>
+  <figcaption>The first-time experience established orientation before capability, giving customers—and the design team—a legible model of the system.</figcaption>
 </figure>
 
-Connecting AWS introduced an external dependency. The flow supported both users with direct access and users who needed to hand instructions to an administrator—an important distinction in enterprise environments where platform ownership and infrastructure access rarely belong to the same person.
+Connecting AWS revealed that even a seemingly linear setup flow crossed organizational roles. The person creating a project might possess direct infrastructure access, or they might need to hand precise instructions to an administrator. Product configuration and organizational authority were part of the same experience.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/1-02-connect-aws.png" alt="Guided AWS connection setup in Dremio" loading="lazy" decoding="async">
-  <figcaption>Infrastructure setup is broken into explicit steps, with enough context to support either direct configuration or an administrative handoff.</figcaption>
+  <figcaption>Infrastructure setup supported both direct configuration and administrative handoff, acknowledging that capability and authority often reside with different people.</figcaption>
 </figure>
 
-Inviting collaborators came last. The sequence let an individual reach a usable project before introducing permissions and team structure, then made collaboration the natural next step rather than a prerequisite for progress.
+Inviting collaborators came after an individual could establish a usable project. The sequence did more than reduce cognitive load. It exposed the relationships among workspace, infrastructure, permissions, and team structure—the underlying grammar I would later need when designing more specialized workflows.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/1-03-invite-users.png" alt="Dremio invitation screen for adding project collaborators" loading="lazy" decoding="async">
-  <figcaption>The final step turns an individually configured project into a shared workspace.</figcaption>
+  <figcaption>The final step transformed an individually configured project into a shared analytical environment.</figcaption>
 </figure>
 
----
+The work generated immediate customer value while functioning as situated learning. I was not studying an abstract domain model before beginning design. I was constructing a real experience with engineers, product leaders, data experts, and customers, then using their responses to refine both the product and my understanding of it.
 
-## 2. Making Versioned Data Legible
+## Composing the Learning Surface
 
-The versioning model needed to answer a simple question first: **Where am I working?** Persistent repository and branch context let people isolate experimentation from production without needing to understand source-control terminology in advance.
+The composition of the team accelerated that transition far more than individual study could have.
+
+Engineers understood how the platform behaved under technical and operational pressure. Product leaders carried market context and a view of the workflows Dremio needed to support. Data practitioners understood the consequences of changes to datasets, schemas, queries, and shared sources of truth. Customers supplied the lived reality: how work moved between people, where confidence broke down, and which technical distinctions materially changed a decision.
+
+I contributed interaction design, systems thinking, pattern recognition, and an outsider’s sensitivity to unarticulated assumptions. Other designers contributed adjacent strengths without needing to become analysts themselves. None of us held the complete model, but the collaborative surface allowed relevant knowledge to travel toward the work as the work demanded it.
+
+Domain expertise is indispensable; domain isolation is not. A specialist’s knowledge becomes more valuable when the working system allows it to alter the perception of people who see the problem differently—and when those perspectives can, in turn, expose what expertise has normalized.
+
+The asymmetry among what we knew became productive.
+
+## A Vernacular for Versioned Data
+
+Shared language accelerated that exchange.
+
+The language of Git—branches, commits, histories, merges, and conflicts—was more than a collection of technical labels. It carried a model for independent work, accountable change, divergence, comparison, and safe convergence. Engineers already understood that model deeply. Designers could use it to reason about state and consequence. Product leaders could use it to discuss collaboration. Data practitioners could test where the analogy held and where the material reality of data required a different answer.
+
+A shared vernacular made our differences communicable without making our expertise homogeneous.
+
+That communication mattered because Dremio’s strategic opportunity was not simply to expose source-control mechanics inside a data product. Most of the people using the experience were not Git experts, nor should they have needed to become Git experts to benefit from isolation, history, review, and recovery. Our job was to preserve the protections of the underlying model while translating them into workflows that made sense in analytical work.
+
+The design question became:
+
+> How might we give enterprise data teams the freedom to experiment without weakening confidence, accountability, or control?
+
+## Turning Abstraction into Orientation
+
+Versioned data first needed to answer a very human question: **Where am I working?**
+
+Persistent repository and branch context transformed an abstract versioning structure into a stable sense of place. A user could understand that work was isolated from the shared version before being asked to reason about how the isolation had been implemented.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/02-01-repository-navigation.png" alt="Dremio repository navigation with visible branch context" loading="lazy" decoding="async">
-  <figcaption>Repository and branch context remain visible as part of navigation, turning an abstract versioning model into a stable sense of place.</figcaption>
+  <figcaption>Repository and branch context made location persistent, allowing users to work independently without losing their relationship to the shared environment.</figcaption>
 </figure>
 
-History then made change accountable. Author, time, affected objects, and commit context were structured as evidence a user could scan—not as an activity log they had to decode.
+History then made change accountable. Author, time, affected objects, and commit context were organized as evidence someone could scan, rather than as an activity log they had to decode.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/2-03-commit-history.png" alt="Commit history for a Dremio data repository" loading="lazy" decoding="async">
-  <figcaption>Commit history gives teams a shared record of what changed, when it changed, and who was responsible.</figcaption>
+  <figcaption>Commit history gave teams a common record of what changed, when it changed, and who was responsible.</figcaption>
 </figure>
 
-Ahead and behind states made divergence visible at a glance. The goal was not to teach the mechanics of a distributed version-control system; it was to let a user recognize whether their current context was safe and current.
+Ahead-and-behind states made divergence visible before it became consequential. The interface did not need to teach distributed version-control theory. It needed to help a person recognize whether their context was current, what had changed elsewhere, and whether the next action was safe.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/02-02-change-context.png" alt="Dremio branch comparison showing change context and divergence" loading="lazy" decoding="async">
-  <figcaption>Change context turns branch divergence into an immediate status signal before the user reviews or merges work.</figcaption>
+  <figcaption>Change context translated divergence into an immediate status signal rather than requiring users to infer it from repository mechanics.</figcaption>
 </figure>
 
-The commit flow became a deliberate review point. Users could inspect affected datasets and distinguish additions, deletions, and modifications before making work permanent.
-
-<figure class="case-study-figure case-study-figure--wide">
-  <img src="/img/case-studies/dremio/02-05-commit-review.png" alt="Dremio commit review showing changed datasets" loading="lazy" decoding="async">
-  <figcaption>The review step places consequences before confirmation, supporting both accountability and recovery.</figcaption>
-</figure>
-
-For higher-stakes decisions, a commit detail view exposed the underlying schema, SQL, storage, and row-level implications. This preserved a concise default while keeping the evidence needed for validation close at hand.
+The commit flow became a deliberate review point. Users could inspect affected datasets and distinguish additions, deletions, and modifications before making work permanent. Deeper detail—schema, SQL, storage, and row-level implications—remained available when the decision required evidence beyond the summary.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/02-06-commit-detail.png" alt="Detailed Dremio commit view with dataset and change information" loading="lazy" decoding="async">
-  <figcaption>Progressive detail answers the deeper question: “What will this change actually do?”</figcaption>
+  <figcaption>Progressive detail preserved a concise default while keeping consequential evidence close to the decision.</figcaption>
 </figure>
 
----
+These designs were not the product of a designer becoming a database expert in isolation. They were products of repeated contact between interaction models, technical behavior, domain consequence, and customer practice.
 
-## 3. Keeping SQL Exploration in Context
+## Building the Analytics Cockpit
 
-SQL work is iterative. Analysts move between finding data, writing a query, running it, interpreting results, and diagnosing failures. Separating those activities across disconnected surfaces increases context switching and makes it harder to understand what the system is doing.
+As the boundary of my domain knowledge moved, the work became more specialized.
 
-The job-monitoring view established operational context: whether a query finished, how long it took, why it failed, and whether a similar query had already run.
+SQL exploration is iterative. Analysts move between finding data, writing a query, running it, interpreting results, and diagnosing failure. Separating those activities across disconnected surfaces creates context switching at precisely the moment a user is trying to hold a complex hypothesis in working memory.
+
+The job-monitoring view made the behavior of the system observable: whether a query completed, how long it took, why it failed, and whether similar work had already run.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/3-01-job-monitoring-dashboard.png" alt="Dremio job monitoring dashboard showing query status and history" loading="lazy" decoding="async">
-  <figcaption>Job history makes system behavior observable instead of leaving users to infer whether work completed.</figcaption>
+  <figcaption>Job history externalized system state instead of asking analysts to infer whether work had completed or why it had failed.</figcaption>
 </figure>
 
-The SQL workspace kept data navigation, authoring, execution, and results together. Results appeared directly beneath the editor, creating a tight feedback loop between an idea and its evidence.
+The SQL workspace kept data navigation, authoring, execution, and results in one operational context. Results appeared directly beneath the editor, tightening the feedback loop between an analytical idea and its evidence. Contextual assistance reduced avoidable syntax errors while remaining light enough not to obstruct expert users.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/3-02-sql-runner.png" alt="Dremio SQL workspace combining data navigation and query authoring" loading="lazy" decoding="async">
-  <figcaption>The workspace preserves context across discovery, authoring, and execution.</figcaption>
+  <figcaption>The workspace preserved context across discovery, authoring, execution, and interpretation.</figcaption>
 </figure>
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/3-03-query-results.png" alt="Query results displayed beneath the SQL editor in Dremio" loading="lazy" decoding="async">
-  <figcaption>Immediate results support the rapid test-and-learn rhythm of exploratory SQL work.</figcaption>
+  <figcaption>Immediate results supported the rapid test-and-learn cadence of exploratory SQL work.</figcaption>
 </figure>
 
-Assisted authoring reduced syntax errors and recalled available metadata without taking control away from experienced users. The objective was consistent across skill levels: make the correct path the easiest path.
+By this point, designers who were not data analysts were helping to shape what I regard as a best-in-class analytics cockpit. We had not displaced domain expertise. We had made it interoperable with design expertise, allowing the product to preserve technical sophistication while becoming more observable, navigable, and coherent.
 
-<figure class="case-study-figure case-study-figure--wide">
-  <img src="/img/case-studies/dremio/3-04-inline-editing.png" alt="Inline SQL assistance and editing in Dremio" loading="lazy" decoding="async">
-  <figcaption>Contextual assistance helps newer users while remaining lightweight enough for expert workflows.</figcaption>
-</figure>
+## Designing the Moment Automation Stops
 
----
+The merge workflow brought the product’s trust model into focus.
 
-## 4. Designing for the Moment Automation Stops
-
-The merge workflow brought the system’s trust model together. Before merging, users could compare histories and inspect the relationship between a feature branch and the shared main branch.
+Before merging, users could compare histories and inspect the relationship between independent work and the shared main branch. When the system could reconcile changes automatically, the workflow remained concise. When it could not, the interface needed to explain why automation had stopped and return the decision to a properly informed human.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/4-01-merge-ready.png" alt="Dremio merge screen comparing a feature branch with the main branch" loading="lazy" decoding="async">
-  <figcaption>A pre-merge comparison makes the relationship between independent work and the shared source of truth visible before it becomes permanent.</figcaption>
+  <figcaption>A pre-merge comparison made the relationship between independent work and the shared source of truth visible before convergence became permanent.</figcaption>
 </figure>
-
-When the system could not merge changes automatically, it said so directly and identified the conflict. The interface then moved from automated execution to an informed human decision.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/4-02-merge-conflict.png" alt="Dremio merge conflict screen identifying an unresolved change" loading="lazy" decoding="async">
-  <figcaption>The conflict state explains why the system has stopped instead of hiding the problem behind a generic failure.</figcaption>
+  <figcaption>The conflict state identified what automation could not resolve rather than hiding the problem behind a generic failure.</figcaption>
 </figure>
 
-Side-by-side versions and surrounding context let the user resolve ordering and content differences without making a silent or destructive choice.
+Side-by-side versions and surrounding context preserved both alternatives long enough for someone to understand the tradeoff. The system did not silently choose, nor did it simply abandon the user at an error state. It changed modes—from automated execution to supported human judgment.
 
 <figure class="case-study-figure case-study-figure--wide">
   <img src="/img/case-studies/dremio/4-03-merge-reorder.png" alt="Dremio side-by-side merge conflict resolution interface" loading="lazy" decoding="async">
-  <figcaption>Conflict resolution preserves both versions long enough for the user to understand the tradeoff and choose deliberately.</figcaption>
+  <figcaption>Conflict resolution gave users sufficient context to choose deliberately without destroying either version prematurely.</figcaption>
 </figure>
 
-The completed state confirmed that the operation succeeded and returned the user to an unambiguous shared context.
+This workflow represented the same collaborative principle at product scale. Independent contributors could pursue different lines of work, the system preserved their histories, and convergence occurred through explicit contact rather than accidental overwrite.
 
-<figure class="case-study-figure case-study-figure--wide">
-  <img src="/img/case-studies/dremio/4-04-merge-success.png" alt="Successful merge confirmation in Dremio" loading="lazy" decoding="async">
-  <figcaption>Immediate confirmation closes the loop: independent work has safely converged into the shared branch.</figcaption>
-</figure>
+The product itself became a collaborative surface.
+
+## Outcome
+
+Within approximately six months, I moved from marginal domain fluency to meaningful design contributions across some of Dremio’s most specialized surfaces. In parallel, the team produced a coherent model spanning first-time setup, data exploration, version history, SQL authoring, system feedback, and conflict resolution.
+
+Customers could enter a usable workspace without confronting the entire architecture at once. Analysts could maintain context across discovery, authoring, execution, and results. Teams could isolate work, understand divergence, inspect consequences, and safely converge on a shared source of truth. When automation reached the boundary of what it could decide, the interface supplied the evidence necessary for accountable human intervention.
+
+Multiple kinds of expertise became mutually amplifying. Engineers, product leaders, data practitioners, customers, and designers contributed from different edges of understanding while the work continuously moved those edges. Design gained fluency in a technical domain without pretending to conquer it.
+
+## What This Case Taught Me
+
+Dremio gave precise language to a practice I had followed for years.
+
+A well-composed team should not require every participant to possess every capability before meaningful work begins. It should create a surface through which knowledge and capability can travel. People contribute while learning, and they learn through consequential contribution.
+
+That is not permission for uninformed design. It is a more demanding model of informed design—one in which curiosity, domain expertise, technical consequence, customer evidence, and pattern recognition remain in contact throughout the work instead of appearing as sequential phases.
+
+In the vocabulary of my design philosophy:
+
+> **Collaborative Surfaces × Capability Vectors = Productive Contact**
+
+At Dremio, productive contact made unfamiliarity temporarily valuable, expertise transmissible, and increasingly specialized work possible. It allowed the domain to benefit from the newcomer while the newcomer was still learning the domain.
+
+I contribute at the edge of what I know, then use collaboration to move that edge.
 
 ---
 
-## Result
-
-The resulting system connected setup, exploration, review, and collaboration through one consistent idea: make complex operations understandable before they become consequential.
-
-Users could:
-
-- enter a usable workspace through a guided enterprise setup
-- isolate work without losing their sense of location
-- understand history, ownership, and divergence before acting
-- inspect the impact of a change at the level their decision required
-- move between SQL authoring, execution, and results without losing context
-- resolve conflicts with the evidence needed for a deliberate human decision
-
-The interface did not remove the complexity of versioned enterprise data. It gave that complexity a visible structure—one that allowed independent work to safely converge on a shared source of truth.
-
-The broader lesson extended beyond data platforms: trust is not created by hiding complexity. It is created by revealing the right part of the system at the moment a person needs to decide.
+[Read the design philosophy behind this work.](/philosophy/)

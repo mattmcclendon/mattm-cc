@@ -6,7 +6,7 @@ company: "Automation Anywhere"
 role: "UX Strategy & Intelligent Automation Lead (Principal)"
 timeframe: "2020–2021"
 group: "selected-work"
-order: 20
+order: 30
 tags: ["AI Systems", "Human-in-the-Loop", "Enterprise Automation"]
 ---
 
